@@ -64,7 +64,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/txtvehicle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spnFuel"
         android:layout_width="198dp"
         android:layout_height="31dp"
         android:layout_marginTop="28dp"
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/spnVehicle"
         android:layout_width="198dp"
         android:layout_height="31dp"
         android:layout_marginStart="74dp"
@@ -105,11 +105,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2"
+        app:layout_constraintTop_toBottomOf="@+id/spnFuel"
         app:layout_constraintVertical_bias="0.052" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/txtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -118,10 +118,10 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+        app:layout_constraintTop_toBottomOf="@+id/spnVehicle" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/txtpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -131,8 +131,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintStart_toEndOf="@+id/spnVehicle"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
         app:layout_constraintVertical_bias="0.06" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtpassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
