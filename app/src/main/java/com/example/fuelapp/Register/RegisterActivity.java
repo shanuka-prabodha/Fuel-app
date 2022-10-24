@@ -2,6 +2,7 @@ package com.example.fuelapp.Register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,13 +16,14 @@ public class RegisterActivity extends AppCompatActivity {
     private Button User;
     private Button Stations;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.fuelapp.R.layout.activity_register);
 
-        User = findViewById(R.id.user);
-        Stations = findViewById(R.id.admin);
+        User = findViewById(R.id.vehicle);
+        Stations = findViewById(R.id.station);
 
         User.setOnClickListener(new View.OnClickListener() {
             @Override

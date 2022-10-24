@@ -16,7 +16,9 @@ import com.example.fuelapp.Model.LoginRequest;
 import com.example.fuelapp.Model.UserLoginResponse;
 import com.example.fuelapp.R;
 import com.example.fuelapp.Register.RegisterActivity;
+import com.example.fuelapp.Register.VehicleRegisterActivity;
 import com.example.fuelapp.Station.StationActivity;
+import com.example.fuelapp.VehicleOwner.SearchActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,14 +58,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, StationActivity.class);
-                startActivity(intent);
-
-            }
-        });
+//        login.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(LoginActivity.this, StationActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        });
     }
 
     private void onSignup(){
@@ -82,10 +84,19 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
                 Log.e("RegisterActivity", "Response code " +response.code());
-              //  Log.e("RegisterActivity", "Response code " +response.body().getMsg());
+                Log.e("RegisterActivity", "Response code " +response.body().getData().getRole());
 
 
                 if (response.code() == 200) {
+                    if (response.body().getData().getRole().contentEquals("user")) {
+                        Intent intent = new Intent(LoginActivity.this, SearchActivity.class);
+                        startActivity(intent);
+
+                    }else{
+                        Intent intent = new Intent(LoginActivity.this, StationActivity.class);
+                        startActivity(intent);
+                    }
+
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
                 } else {
