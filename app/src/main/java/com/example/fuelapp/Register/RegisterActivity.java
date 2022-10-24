@@ -28,17 +28,18 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this, VehicleRegisterActivity.class);
                 startActivity(intent);
+
             }
         });
 
         Stations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, StationRegisterActivity.class);
-                startActivity(intent);
+               Intent intent = new Intent(RegisterActivity.this, StationRegisterActivity.class);
+               startActivity(intent);
+
             }
         });
-
 
     }
 }
