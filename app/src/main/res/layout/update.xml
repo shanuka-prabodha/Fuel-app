@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#FFFFFF"
+    android:foregroundTint="#837D7D">
+
+    <EditText
+        android:id="@+id/status"
+        android:layout_width="370dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="106dp"
+        android:backgroundTint="#9A1006"
+        android:ems="10"
+        android:hint="Status"
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="372dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#9A1006"
+        android:ems="10"
+        android:hint="Next "
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/status" />
+
+    <Button
+        android:id="@+id/updatePop"
+        android:layout_width="126dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="#C6EFB815"
+        android:text="Update"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time"
+        app:layout_constraintVertical_bias="0.162" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
