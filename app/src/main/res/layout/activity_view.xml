@@ -79,11 +79,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Queue legth"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView20"
+        app:layout_constraintBaseline_toBaselineOf="@+id/pLength"
         app:layout_constraintStart_toStartOf="@+id/viewt" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/pAvailable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -96,7 +96,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/pLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -105,7 +105,7 @@
         app:layout_constraintEnd_toEndOf="@+id/viewt"
         app:layout_constraintHorizontal_bias="0.747"
         app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/pAvailable" />
 
     <Button
         android:id="@+id/updatePetrol"
@@ -199,7 +199,7 @@
         android:layout_marginStart="44dp"
 
         android:text="Fuel status"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView191"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dAvailable"
         app:layout_constraintStart_toStartOf="@+id/view2"
         tools:ignore="MissingConstraints"  />
 
@@ -220,11 +220,11 @@
         android:layout_marginStart="44dp"
         android:text="Queue legth"
 
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView201"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dLength"
         app:layout_constraintStart_toStartOf="@+id/view2" />
 
     <TextView
-        android:id="@+id/textView191"
+        android:id="@+id/dAvailable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
@@ -235,7 +235,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView201"
+        android:id="@+id/dLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -244,7 +244,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.992"
         app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/textView191" />
+        app:layout_constraintTop_toBottomOf="@+id/dAvailable" />
 
     <Button
         android:id="@+id/updateDiseal"

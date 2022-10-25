@@ -5,6 +5,7 @@ import com.example.fuelapp.Model.Station;
 import com.example.fuelapp.Model.UserReponse;
 import com.example.fuelapp.Model.User;
 import com.example.fuelapp.Model.UserLoginResponse;
+import com.example.fuelapp.Station.StationResponse;
 
 import java.util.List;
 
@@ -30,4 +31,7 @@ public interface IUserAPI {
 
     @POST("api/user")
     Call<UserLoginResponse> SaveUser(@Body User user);
+
+    @GET("api/station/get/{id}")
+    Call<StationResponse> getStations(@Path("id") String id);
 }

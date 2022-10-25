@@ -13,33 +13,63 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="16dp"
-        android:layout_marginTop="44dp"
+        android:background="@drawable/outlined"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteY="142dp">
 
     </SearchView>
+
+    <View
+        android:id="@+id/viewt"
+        android:layout_width="388dp"
+        android:layout_height="88dp"
+
+        android:layout_marginTop="96dp"
+        android:background="@drawable/confirmcard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchview"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/rounded_corner_2"
         android:text="View"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchview"
-        android:background="@drawable/rounded_corner_2"/>
+        app:layout_constraintEnd_toEndOf="@+id/viewt"
+        app:layout_constraintTop_toTopOf="@+id/viewt" />
 
     <TextView
         android:id="@+id/location"
         android:layout_width="210dp"
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="124dp"
         android:text="TextView"
+        android:background="@drawable/outlined"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_view"
         app:layout_constraintEnd_toStartOf="@+id/btn_view"
+        app:layout_constraintHorizontal_bias="0.415"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Fuel Stations"
+        android:textColor="#0E0D0D"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/searchview"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchview" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.329" />
 </androidx.constraintlayout.widget.ConstraintLayout>

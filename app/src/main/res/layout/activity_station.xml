@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="Fuel status"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView19"
+        app:layout_constraintBaseline_toBaselineOf="@+id/pAvailable"
         app:layout_constraintStart_toStartOf="@+id/viewt"
         tools:ignore="MissingConstraints" />
 
@@ -61,12 +61,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="Next arrival"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView20"
+        app:layout_constraintBaseline_toBaselineOf="@+id/pLength"
         app:layout_constraintStart_toStartOf="@+id/viewt" />
 
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/pAvailable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -77,14 +77,14 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/pLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:text="2022-10-26 6.00 PM"
         app:layout_constraintEnd_toEndOf="@+id/viewt"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/pAvailable" />
 
     <Button
         android:id="@+id/updatePetrol"
@@ -96,7 +96,7 @@
         app:layout_constraintEnd_toEndOf="@+id/viewt"
         app:layout_constraintHorizontal_bias="0.858"
         app:layout_constraintStart_toStartOf="@+id/viewt"
-        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        app:layout_constraintTop_toBottomOf="@+id/pLength"
         android:backgroundTint="@color/dark_background"
         android:textAllCaps="false"
         android:textColor="@color/primary_yellow"
@@ -138,7 +138,7 @@
         android:layout_marginStart="44dp"
 
         android:text="Fuel status"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView191"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dAvailable"
         app:layout_constraintStart_toStartOf="@+id/view2"
         tools:ignore="MissingConstraints" />
 
@@ -149,11 +149,11 @@
         android:layout_marginStart="44dp"
         android:text="Next arrival"
 
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView201"
+        app:layout_constraintBaseline_toBaselineOf="@+id/dLength"
         app:layout_constraintStart_toStartOf="@+id/view2" />
 
     <TextView
-        android:id="@+id/textView191"
+        android:id="@+id/dAvailable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -164,14 +164,14 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView201"
+        android:id="@+id/dLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:text="2022-10-26 6.00 PM"
         app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/textView191" />
+        app:layout_constraintTop_toBottomOf="@+id/dAvailable" />
 
     <Button
         android:id="@+id/updateDiseal"
@@ -183,7 +183,7 @@
         app:layout_constraintEnd_toEndOf="@+id/viewt"
         app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/textView201"
+        app:layout_constraintTop_toBottomOf="@+id/dLength"
         android:backgroundTint="@color/dark_background"
         android:textAllCaps="false"
         android:textColor="@color/primary_yellow"/>
