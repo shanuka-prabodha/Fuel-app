@@ -56,7 +56,11 @@
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toEndOf="@+id/textView16"
         app:layout_constraintTop_toTopOf="@+id/viewt"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"
+        />
 
     <TextView
         android:id="@+id/textView17"
@@ -113,7 +117,10 @@
         app:layout_constraintEnd_toEndOf="@+id/viewt"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="@+id/viewt"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
 
     <Button
         android:id="@+id/button4"
@@ -123,7 +130,10 @@
         android:text="Exit before pump"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@+id/viewt"
-        app:layout_constraintTop_toBottomOf="@+id/updatePetrol" />
+        app:layout_constraintTop_toBottomOf="@+id/updatePetrol"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
 
 
     <Button
@@ -137,7 +147,10 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/updatePetrol"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
 
     <View
         android:id="@+id/view2"
@@ -174,7 +187,10 @@
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toEndOf="@+id/textView161"
         app:layout_constraintTop_toTopOf="@+id/view2"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
 
     <TextView
         android:id="@+id/textView171"
@@ -185,7 +201,7 @@
         android:text="Fuel status"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView191"
         app:layout_constraintStart_toStartOf="@+id/view2"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"  />
 
     <TextView
         android:id="@+id/textView181"
@@ -195,7 +211,7 @@
         android:layout_marginTop="16dp"
         android:text="Queue legth"
         app:layout_constraintStart_toStartOf="@+id/viewt"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/textView17"  />
 
     <TextView
         android:id="@+id/textView21"
@@ -240,7 +256,10 @@
         app:layout_constraintEnd_toEndOf="@+id/viewt"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/textView161" />
+        app:layout_constraintTop_toBottomOf="@+id/textView161"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
 
     <Button
         android:id="@+id/button141"
@@ -251,7 +270,10 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/updateDiseal" />
+        app:layout_constraintTop_toBottomOf="@+id/updateDiseal"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
 
     <Button
         android:id="@+id/button51"
@@ -263,6 +285,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintTop_toBottomOf="@+id/updateDiseal"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

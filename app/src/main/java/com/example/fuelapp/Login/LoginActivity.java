@@ -84,12 +84,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
                 Log.e("RegisterActivity", "Response code " +response.code());
-                Log.e("RegisterActivity", "Response code " +response.body().getData().getRole());
-
-
+       
                 if (response.code() == 200) {
                     if (response.body().getData().getRole().contentEquals("user")) {
                         Intent intent = new Intent(LoginActivity.this, SearchActivity.class);
+                        intent.putExtra("id",response.body().getData().getId());
+                        intent.putExtra("email",response.body().getData().getEmail());
                         startActivity(intent);
 
                     }else{

@@ -133,6 +133,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
