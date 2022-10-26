@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 
 public class DBHandler extends SQLiteOpenHelper {
 
+    //Login database creation using sqlite database
+
     public static final String DATABASE_NAME = "login.db";
 
     public DBHandler(@Nullable Context context) {
@@ -18,21 +20,16 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String CREATE_LOGIN_USER =
-                "CREATE TABLE " + DBMaster.Login.TABLE_NAME + "(" +
-                        DBMaster.Login._ID + " INTEGER PRIMARY KEY," +
-                        DBMaster.Login.COLUMN_EMAIL + " TEXT," +
-                        DBMaster.Login.COLUMN_PASSWORD + " TEXT,"+
-                        DBMaster.Login.COLUMN_ID + " TEXT )";
+        //create User table
+        String CREATE_LOGIN_USER = "CREATE TABLE " + DBMaster.Login.TABLE_NAME + "(" + DBMaster.Login._ID + " INTEGER PRIMARY KEY," + DBMaster.Login.COLUMN_EMAIL + " TEXT," + DBMaster.Login.COLUMN_PASSWORD + " TEXT," + DBMaster.Login.COLUMN_ID + " TEXT )";
 
         db.execSQL(CREATE_LOGIN_USER);
 
     }
 
 
-
-    public long saveUser(String email, String password ,String id) {
-
+    //save login info method
+    public long saveUser(String email, String password, String id) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(DBMaster.Login.COLUMN_EMAIL, email);

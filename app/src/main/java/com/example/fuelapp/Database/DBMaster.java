@@ -4,6 +4,8 @@ import android.provider.BaseColumns;
 
 public class DBMaster {
 
+    //Login database columns
+
     private DBMaster() {
 
     }
