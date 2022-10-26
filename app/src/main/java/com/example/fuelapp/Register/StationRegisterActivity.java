@@ -23,6 +23,7 @@ import retrofit2.Response;
 
 public class StationRegisterActivity extends AppCompatActivity {
 
+    //buttons and text fields initialization
     private TextView city;
     private Spinner company;
     private TextView email;
@@ -52,6 +53,7 @@ public class StationRegisterActivity extends AppCompatActivity {
 
     }
 
+    //station user registration method
     public void onRegister() {
 
         String city = this.city.getText().toString();
@@ -59,6 +61,7 @@ public class StationRegisterActivity extends AppCompatActivity {
         String email = this.email.getText().toString();
         String password = this.password.getText().toString();
 
+        //empty field validation
         if(city.isEmpty()){
             this.city.setError("City is required");
             this.city.requestFocus();
@@ -83,15 +86,16 @@ public class StationRegisterActivity extends AppCompatActivity {
             return;
         }
 
-        User user = new User(email, password,"admin",city,company);
+        User user = new User(email, password,"admin",city,company); //create user object with overloaded constructor
 
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
-        Call<UserLoginResponse> call = iUserAPI.SaveUser(user);
+        Call<UserLoginResponse> call = iUserAPI.SaveUser(user); //Station user registration api call
 
         call.enqueue(new Callback<UserLoginResponse>() {
             @Override
             public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
                 Log.e("Response", "Response code : "+ response.code());
+                //log the response code
                 if(response.code() == 200){
                     Log.e("Response", "test : "+response.body().getData().getId());
                     Log.e("Response", "test2 : "+response.body().getData().getRole());

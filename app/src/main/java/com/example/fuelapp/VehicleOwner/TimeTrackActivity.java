@@ -11,6 +11,7 @@ import com.example.fuelapp.R;
 
 import java.util.ArrayList;
 
+//Track fuel station time spend activity
 public class TimeTrackActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<TimeTrack> trackList;

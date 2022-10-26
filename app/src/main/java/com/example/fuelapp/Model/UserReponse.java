@@ -4,15 +4,17 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
+//user response model class
 public class UserReponse {
 
-    @SerializedName("success")
+    @SerializedName("success") //success code
     @Expose
     private Boolean success;
-    @SerializedName("data")
+    @SerializedName("data") //user object list
     @Expose
     private List<User> data = null;
-    @SerializedName("msg")
+    @SerializedName("msg") //message
     @Expose
     private String msg;
 

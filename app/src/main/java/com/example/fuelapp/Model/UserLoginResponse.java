@@ -3,18 +3,20 @@ package com.example.fuelapp.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
+//Usr login response model class
 public class UserLoginResponse {
 
-    @SerializedName("token")
+    @SerializedName("token") //user login token
     @Expose
     private String token;
-    @SerializedName("success")
+    @SerializedName("success") //response code
     @Expose
     private Boolean success;
-    @SerializedName("data")
+    @SerializedName("data") //user object
     @Expose
     private User data = null;
-    @SerializedName("msg")
+    @SerializedName("msg") //message
     @Expose
     private String msg;
 

@@ -23,6 +23,7 @@ import retrofit2.Response;
 
 public class VehicleRegisterActivity extends AppCompatActivity {
 
+    //buttons and text fields initialization
     private TextView vehicleNo;
     private Spinner fuelType;
     private Spinner vehicleType;
@@ -52,14 +53,16 @@ public class VehicleRegisterActivity extends AppCompatActivity {
         });
         
     }
-    
+
+    //vehicle user registration method
     protected void onRegister() {
         String vehicleNo = this.vehicleNo.getText().toString();
         String fuelType = this.fuelType.getSelectedItem().toString();
         String vehicleType = this.vehicleType.getSelectedItem().toString();
         String email = this.email.getText().toString();
         String password = this.password.getText().toString();
-        
+
+        //empty field validation
         if(vehicleNo.isEmpty()){
             this.vehicleNo.setError("Vehicle No is required");
             this.vehicleNo.requestFocus();
@@ -78,27 +81,28 @@ public class VehicleRegisterActivity extends AppCompatActivity {
         return;
          }
 
-        User user = new User(email, password,"user",fuelType,vehicleType,vehicleNo);
+        User user = new User(email, password,"user",fuelType,vehicleType,vehicleNo);//create user object with overloaded constructor
 
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
-        Call<UserLoginResponse> call = iUserAPI.SaveUser(user);
+        Call<UserLoginResponse> call = iUserAPI.SaveUser(user); // save user details to the database
 
         call.enqueue(new Callback<UserLoginResponse>() {
             @Override
             public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
-                Log.e("Response", "Response code : "+ response.code());
+                Log.e("Response", "Response code : "+ response.code());//response code print
                 if(response.code() == 200){
                     Log.e("Response", "test : "+response.body().getData().getId());
                     Log.e("Response", "test2 : "+response.body().getData().getRole());
 
                     Toast.makeText(VehicleRegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-
+                    //display a success message
                 }
             }
 
             @Override
             public void onFailure(Call<UserLoginResponse> call, Throwable t) {
                 Toast.makeText(VehicleRegisterActivity.this, "Registration Fail", Toast.LENGTH_SHORT).show();
+                //display a fail message
             }
         });
 

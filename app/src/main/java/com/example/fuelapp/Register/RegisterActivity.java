@@ -12,7 +12,7 @@ import com.example.fuelapp.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-
+//buttons and text fields initialization
     private Button User;
     private Button Stations;
 
@@ -25,6 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
         User = findViewById(R.id.vehicle);
         Stations = findViewById(R.id.station);
 
+        //button click event for user registration page
         User.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        //button click event for station registration page
         Stations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

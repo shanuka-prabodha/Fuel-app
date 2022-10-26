@@ -21,18 +21,24 @@ public interface IUserAPI {
     @POST("api/user/login")
     Call<UserLoginResponse> login(@Body LoginRequest loginRequest);
 
+    //get all users api call
     @GET("api/user")
     Call<UserReponse> getUsers();
 
+    //get station list api call
     @GET("api/Station")
     Call<List<Station>> getStation();
 
+    //get single user api call
     @GET("api/user/get/{id}")
     Call<User> getOneUser(@Path("id") String id);
 
+
+    //ligin user api call
     @POST("api/user")
     Call<UserLoginResponse> SaveUser(@Body User user);
 
+    //get single station api call
     @GET("api/station/get/{id}")
     Call<StationResponse> getStations(@Path("id") String id);
 }

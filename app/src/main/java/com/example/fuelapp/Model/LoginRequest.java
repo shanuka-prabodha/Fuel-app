@@ -1,5 +1,6 @@
 package com.example.fuelapp.Model;
 
+//Login request model class
 public class LoginRequest {
 
     private String email;

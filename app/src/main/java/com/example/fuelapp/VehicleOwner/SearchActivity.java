@@ -24,6 +24,7 @@ import retrofit2.Response;
 
 public class SearchActivity extends AppCompatActivity {
 
+    //buttons and text fields initialization
     Button btnView;
     TextView txtLocation;
 
@@ -48,9 +49,8 @@ public class SearchActivity extends AppCompatActivity {
         txtLocation.setText("Pilimathalawa");
 
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
-        Call<StationResponse> call = iUserAPI.getStations("63540401d26b8b17b97cdd6e");
-
-        Log.e("StationActivity", "Shanuka " );
+        Call<StationResponse> call = iUserAPI.getStations("63540401d26b8b17b97cdd6e");//pass station id to this method
+        //get station data using station id
         call.enqueue(new Callback<StationResponse>() {
 
             @Override
@@ -71,8 +71,6 @@ public class SearchActivity extends AppCompatActivity {
 
                 } else {
                     Log.e("StationActivity", "Exit " );
-//                    Intent intent = new Intent(StationActivity.this, SearchActivity.class);
-//                    startActivity(intent);
                 }
 
 
@@ -84,14 +82,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-//        btnView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(SearchActivity.this, ViewActivity.class);
-//                startActivity(intent);
-//
-//            }
-//        });
+
 
     }
 }

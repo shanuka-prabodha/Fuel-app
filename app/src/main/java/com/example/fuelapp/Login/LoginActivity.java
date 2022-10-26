@@ -26,6 +26,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
+//buttons and text fields initialization
 
     private TextView signup;
     private Button loginbutton;
@@ -58,33 +59,34 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-//        login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(LoginActivity.this, StationActivity.class);
-//                startActivity(intent);
-//
-//            }
-//        });
     }
 
+    //singnup function
     private void onSignup(){
 
         String user = username.getText().toString();
         String pass = password.getText().toString();
 
+        //craete login user object
         LoginRequest loginRequest = new LoginRequest(user,pass);
 
+
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
+        //call login api
         Call<UserLoginResponse> call = iUserAPI.login(loginRequest);
 
 
         call.enqueue(new Callback<UserLoginResponse>() {
 
+
+            //api call response
             @Override
             public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
                 Log.e("RegisterActivity", "Response code " +response.code());
-       
+
+                //check response code
+                //depend on response redirect user to relevent page or display error messages
+
                 if (response.code() == 200) {
                     if (response.body().getData().getRole().contentEquals("user")) {
                         Intent intent = new Intent(LoginActivity.this, SearchActivity.class);
@@ -105,6 +107,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
 
+            //api call error
             @Override
             public void onFailure(Call<UserLoginResponse> call, Throwable t) {
                 Log.e("RegisterActivity", String.valueOf(t));

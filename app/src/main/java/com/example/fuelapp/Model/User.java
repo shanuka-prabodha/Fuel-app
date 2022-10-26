@@ -4,10 +4,10 @@ package com.example.fuelapp.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-
+//User model class
 public class User {
 
-    @SerializedName("_id")
+    @SerializedName("_id") //mongo db document id
     @Expose
     private String id;
     @SerializedName("email")

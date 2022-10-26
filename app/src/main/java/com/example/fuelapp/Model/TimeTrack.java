@@ -1,6 +1,6 @@
 package com.example.fuelapp.Model;
 
-
+//Time track model class
 public class TimeTrack {
 
     private String name;

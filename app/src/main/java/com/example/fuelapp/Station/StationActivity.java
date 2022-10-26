@@ -21,6 +21,7 @@ import retrofit2.Call;
 
 public class StationActivity extends AppCompatActivity {
 
+    //buttons and text fields initialization
     private Button btn1, btn2;
     private TextView txtPetrolAvailable, txtDisealAvailable, txtPetrolLength, txtDisealLength;
 
@@ -62,6 +63,7 @@ public class StationActivity extends AppCompatActivity {
 
     }
 
+    //
     private void showUpdate(final String Id, final String question, String answer) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

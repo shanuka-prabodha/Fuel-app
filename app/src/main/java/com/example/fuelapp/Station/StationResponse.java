@@ -4,6 +4,8 @@ package com.example.fuelapp.Station;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+
+//Station response model class
 public class StationResponse {
 
     @SerializedName("success")

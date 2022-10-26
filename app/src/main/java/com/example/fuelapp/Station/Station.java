@@ -3,7 +3,7 @@ package com.example.fuelapp.Station;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-
+//Station model class
 public class Station {
 
     @SerializedName("_id")
