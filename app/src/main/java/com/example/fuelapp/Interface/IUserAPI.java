@@ -16,7 +16,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface IUserAPI {
-
+    
+    //user login api call with LoginRequest Body
     @POST("api/user/login")
     Call<UserLoginResponse> login(@Body LoginRequest loginRequest);
 

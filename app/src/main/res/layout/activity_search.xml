@@ -13,12 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="16dp"
+        android:layout_marginTop="88dp"
         android:background="@drawable/outlined"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.218"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="142dp">
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
 
     </SearchView>
 
@@ -27,14 +27,13 @@
         android:layout_width="388dp"
         android:layout_height="88dp"
 
-        android:layout_marginTop="96dp"
         android:background="@drawable/confirmcard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.304"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchview"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.235"
         tools:ignore="MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -67,9 +66,7 @@
         android:text="Search Fuel Stations"
         android:textColor="#0E0D0D"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/searchview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.329" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

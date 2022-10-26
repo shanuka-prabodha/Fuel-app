@@ -121,6 +121,14 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
 
+        btnDisealView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDisealView("10", "5", "9","1","6");
+
+            }
+        });
+
     }
 
 
@@ -141,6 +149,43 @@ public class ViewActivity extends AppCompatActivity {
 
         TextView bikeL = view.findViewById(R.id.bikePL);
         bikeL.setText(carLength);
+
+        TextView otherL = view.findViewById(R.id.otherPL);
+        otherL.setText(carLength);
+
+        final Button button = (Button) view.findViewById(R.id.queueOkBtn);
+
+
+        builder.setTitle("" );
+
+        final AlertDialog alert = builder.create();
+        alert.show();
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alert.dismiss();
+            }
+        });
+
+
+
+    }
+
+    private void showDisealView(final String Id, final String carLength, final String vanLength,final String bikeLength, final String otherLength) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        final View view = inflater.inflate(R.layout.diseal_queue, null);
+        builder.setView(view);
+
+        TextView carL = view.findViewById(R.id.carPL);
+        carL.setText(carLength);
+
+        TextView vanL = view.findViewById(R.id.vanPL);
+        vanL.setText(carLength);
 
         TextView otherL = view.findViewById(R.id.otherPL);
         otherL.setText(carLength);

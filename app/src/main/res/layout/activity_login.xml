@@ -239,7 +239,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            tools:srcCompat="@drawable/profile1" />
+            app:srcCompat="@drawable/profile1" />
+
+
+
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -262,7 +266,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            tools:srcCompat="@drawable/lock" />
+            app:srcCompat="@drawable/lock" />
 
         <ImageView
             android:id="@+id/imageView90"
@@ -274,18 +278,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/lock" />
-    </androidx.cardview.widget.CardView>
 
+    </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="169dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="157dp"
+        android:layout_height="154dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/machine" />
+        app:layout_constraintVertical_bias="0.551"
+        app:srcCompat="@drawable/machine" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

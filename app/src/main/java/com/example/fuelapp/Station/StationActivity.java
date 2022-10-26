@@ -30,11 +30,11 @@ public class StationActivity extends AppCompatActivity {
         setContentView(com.example.fuelapp.R.layout.activity_station);
 
         btn1 = findViewById(R.id.updatePetrol);
-//        btn2 = findViewById(R.id.updateDiseal);
+        btn2 = findViewById(R.id.updateDiseal);
         txtPetrolAvailable = findViewById(R.id.pAvailable);
-//        txtDisealAvailable = findViewById(R.id.dAvailable);
+        txtDisealAvailable = findViewById(R.id.dAvailable);
         txtPetrolLength = findViewById(R.id.pLength);
-//        txtDisealLength = findViewById(R.id.dLength);
+        txtDisealLength = findViewById(R.id.dLength);
 
         Intent intent = getIntent();
         System.out.println( intent.getStringExtra("station")) ;
@@ -43,51 +43,6 @@ public class StationActivity extends AppCompatActivity {
         Call<StationResponse> call = iUserAPI.getStations("63540401d26b8b17b97cdd6e");
 
         Log.e("StationActivity", "Dinisuru " );
-//        call.enqueue(new Callback<StationResponse>() {
-//
-//
-//
-//            @Override
-//            public void onResponse(Call<StationResponse> call, Response<StationResponse> response) {
-//                Log.e("StationActivity", "Response code " + response.code());
-//
-//                if (response.code() == 200) {
-//                    if(response.body().getData().getIspetrol()){
-//                        txtPetrolAvailable.setText("Available");
-//                    }else{
-//                        txtPetrolAvailable.setText("Finished");
-//                    }
-//
-//                    if(response.body().getData().getIsdiesel()){
-//                        txtDisealAvailable.setText("Available");
-//                    }else{
-//                        txtDisealAvailable.setText("Finished");
-//                    }
-//
-//                    int petrolQueue = response.body().getData().getPcar() + response.body().getData().getPbike() + response.body().getData().getPother();
-//                    int disealQueue = response.body().getData().getDvan() + response.body().getData().getDbus() + response.body().getData().getDother();
-//
-//                    Integer pqueue = new Integer(petrolQueue);
-//                    Integer dqueue = new Integer(disealQueue);
-//
-//                    txtPetrolLength.setText(pqueue.toString());
-//                    txtDisealLength.setText(dqueue.toString());
-//
-//                } else {
-//                    Log.e("StationActivity", "Exit " );
-////                    Intent intent = new Intent(StationActivity.this, SearchActivity.class);
-////                    startActivity(intent);
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<StationResponse> call, Throwable t) {
-//                Log.e("RegisterActivity", String.valueOf(t));
-//            }
-//        });
-
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
