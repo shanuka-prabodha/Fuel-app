@@ -1,12 +1,16 @@
 package com.example.fuelapp.VehicleOwner;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.fuelapp.Interface.IUserAPI;
@@ -21,6 +25,8 @@ import retrofit2.Response;
 public class ViewActivity extends AppCompatActivity {
 
     private TextView txtPetrolAvailable, txtDisealAvailable, txtPetrolLength, txtDisealLength;
+    Button btnMoreInfo ,btnDMoreInfo ;
+    ImageButton btnPetrolView , btnDisealView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,10 @@ public class ViewActivity extends AppCompatActivity {
         txtDisealAvailable = findViewById(R.id.dAvailable);
         txtPetrolLength = findViewById(R.id.pLength);
         txtDisealLength = findViewById(R.id.dLength);
+        btnMoreInfo = findViewById(R.id.btnPMore);
+        btnDMoreInfo = findViewById(R.id.btnDMore);
+        btnPetrolView = findViewById(R.id.pViewBtn);
+        btnDisealView = findViewById(R.id.dView);
 
         Intent intent = getIntent();
         System.out.println( intent.getStringExtra("station")) ;
@@ -81,6 +91,73 @@ public class ViewActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<StationResponse> call, Throwable t) {
                 Log.e("RegisterActivity", String.valueOf(t));
+            }
+        });
+
+        btnMoreInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewActivity.this, TimeTrackActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        btnDMoreInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewActivity.this, TimeTrackActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+        btnPetrolView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPetrolView("12", "2", "3","3","3");
+
+            }
+        });
+
+    }
+
+
+
+    private void showPetrolView(final String Id, final String carLength, final String vanLength,final String bikeLength, final String otherLength) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        final View view = inflater.inflate(R.layout.queue, null);
+        builder.setView(view);
+
+        TextView carL = view.findViewById(R.id.carPL);
+        carL.setText(carLength);
+
+        TextView vanL = view.findViewById(R.id.vanPL);
+        vanL.setText(carLength);
+
+        TextView bikeL = view.findViewById(R.id.bikePL);
+        bikeL.setText(carLength);
+
+        TextView otherL = view.findViewById(R.id.otherPL);
+        otherL.setText(carLength);
+
+        final Button button = (Button) view.findViewById(R.id.queueOkBtn);
+
+
+        builder.setTitle("" );
+
+        final AlertDialog alert = builder.create();
+        alert.show();
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alert.dismiss();
             }
         });
 

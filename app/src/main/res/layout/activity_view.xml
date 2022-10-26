@@ -41,12 +41,12 @@
         android:text="Petrol"
         android:textColor="#121111"
         android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnPMore"
         app:layout_constraintEnd_toEndOf="@+id/viewt"
         app:layout_constraintStart_toStartOf="@+id/viewt" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnPMore"
         android:layout_width="107dp"
         android:layout_height="39dp"
         android:layout_marginTop="20dp"
@@ -173,12 +173,12 @@
         android:text="Diseal"
         android:textColor="#121111"
         android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button21"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnDMore"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2" />
 
     <Button
-        android:id="@+id/button21"
+        android:id="@+id/btnDMore"
         android:layout_width="107dp"
         android:layout_height="39dp"
         android:layout_marginTop="16dp"
@@ -247,6 +247,21 @@
         app:layout_constraintTop_toBottomOf="@+id/dAvailable" />
 
     <Button
+        android:id="@+id/button52"
+        android:layout_width="126dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="20dp"
+        android:text="Exit after pump"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/updateDiseal"
+        tools:ignore="MissingConstraints"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
+
+    <Button
         android:id="@+id/updateDiseal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -289,5 +304,27 @@
         android:backgroundTint="@color/dark_background"
         android:textAllCaps="false"
         android:textColor="@color/primary_yellow"/>
+
+    <ImageButton
+        android:id="@+id/dView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/dLength"
+        app:layout_constraintTop_toBottomOf="@+id/dAvailable"
+        app:srcCompat="@drawable/exinfo" />
+
+    <ImageButton
+        android:id="@+id/pViewBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/viewt"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toEndOf="@+id/pLength"
+        app:layout_constraintTop_toBottomOf="@+id/pAvailable"
+        app:srcCompat="@drawable/exinfo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

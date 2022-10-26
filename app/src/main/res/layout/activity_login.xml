@@ -71,7 +71,6 @@
         android:layout_marginBottom="28dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toStartOf="@+id/cardView3"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -264,6 +263,17 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             tools:srcCompat="@drawable/lock" />
+
+        <ImageView
+            android:id="@+id/imageView90"
+            android:layout_width="66dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/lock" />
     </androidx.cardview.widget.CardView>
 
 
@@ -273,7 +283,7 @@
         android:layout_height="128dp"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintHorizontal_bias="0.797"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/machine" />

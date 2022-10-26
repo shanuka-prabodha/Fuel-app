@@ -12,18 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.fuelapp.Interface.IUserAPI;
-import com.example.fuelapp.Login.LoginActivity;
 import com.example.fuelapp.Model.Controller;
-import com.example.fuelapp.Model.UserLoginResponse;
 import com.example.fuelapp.R;
-import com.example.fuelapp.VehicleOwner.SearchActivity;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class StationActivity extends AppCompatActivity {
 
@@ -98,6 +92,7 @@ public class StationActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 showUpdate("12", "Available", "2020-08-7 9.00 A.M.");
             }
         });
@@ -126,7 +121,7 @@ public class StationActivity extends AppCompatActivity {
         final EditText timeArrival = (EditText) view.findViewById(R.id.time);
         TextView arrivalTime = view.findViewById(R.id.time);
         arrivalTime.setText(answer);
-        final Button button = (Button) view.findViewById(R.id.updatePop);
+        final Button button = (Button) view.findViewById(R.id.queueOkBtn);
 
 
         builder.setTitle("" + question);

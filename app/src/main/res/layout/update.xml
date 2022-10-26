@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/status" />
 
     <Button
-        android:id="@+id/updatePop"
+        android:id="@+id/queueOkBtn"
         android:layout_width="126dp"
         android:layout_height="47dp"
         android:layout_marginTop="68dp"
