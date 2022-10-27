@@ -141,4 +141,18 @@ public class Station {
         this.dnextarival = dnextarival;
     }
 
+    public Station(String id, String name, Boolean ispetrol, Integer pbike, Integer pcar, Integer pother, Boolean isdiesel, Integer dbus, Integer dvan, Integer dother, String pnextarival, String dnextarival) {
+        this.id = id;
+        this.name = name;
+        this.ispetrol = ispetrol;
+        this.pbike = pbike;
+        this.pcar = pcar;
+        this.pother = pother;
+        this.isdiesel = isdiesel;
+        this.dbus = dbus;
+        this.dvan = dvan;
+        this.dother = dother;
+        this.pnextarival = pnextarival;
+        this.dnextarival = dnextarival;
+    }
 }

@@ -20,7 +20,7 @@
         android:background="@drawable/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="89dp" />
+        tools:layout_editor_absoluteY="88dp" />
 
     <TextView
         android:id="@+id/textView10"
@@ -59,25 +59,14 @@
         app:srcCompat="@drawable/smallcar" />
 
     <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="45dp"
-        android:layout_height="35dp"
-
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
-        app:srcCompat="@drawable/van" />
-
-    <ImageView
         android:id="@+id/imageView11"
         android:layout_width="43dp"
         android:layout_height="37dp"
 
         android:layout_marginStart="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9"
         app:srcCompat="@drawable/bike" />
 
     <ImageView
@@ -87,6 +76,8 @@
 
         android:layout_marginStart="80dp"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="287dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView11"
         app:srcCompat="@drawable/other" />
@@ -105,41 +96,26 @@
         app:layout_constraintStart_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toBottomOf="@+id/pTime" />
 
-    <TextView
-        android:id="@+id/vanPL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="48dp"
-        android:text="TextView"
-        android:textColor="#050505"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/carPL" />
-
 
     <TextView
         android:id="@+id/bikePL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="40dp"
         android:text="TextView"
         android:textColor="#050505"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.73"
         app:layout_constraintStart_toEndOf="@+id/imageView11"
-        app:layout_constraintTop_toBottomOf="@+id/vanPL" />
+        app:layout_constraintTop_toBottomOf="@+id/carPL" />
 
     <TextView
         android:id="@+id/otherPL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="56dp"
         android:text="TextView"
         android:textColor="#050505"
         android:textSize="16sp"

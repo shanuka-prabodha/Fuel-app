@@ -30,13 +30,13 @@
         android:text="Next Fuel Arrival Time "
         android:textColor="#050505"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/pTime"
+        app:layout_constraintEnd_toStartOf="@+id/dTime"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view34" />
 
     <TextView
-        android:id="@+id/pTime"
+        android:id="@+id/dTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
@@ -92,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/pTime" />
+        app:layout_constraintTop_toBottomOf="@+id/dTime" />
 
     <TextView
         android:id="@+id/vanPL"
