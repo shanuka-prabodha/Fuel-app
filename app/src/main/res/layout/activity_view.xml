@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteY="8dp">
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/locationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -26,12 +26,12 @@
         android:id="@+id/viewt"
         android:layout_width="369dp"
         android:layout_height="264dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="64dp"
 
         android:background="@drawable/payment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/locationName"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -68,6 +68,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="Fuel status"
+        android:textColor="#040303"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/viewt"
         app:layout_constraintTop_toBottomOf="@+id/textView16"
         tools:ignore="MissingConstraints" />
@@ -78,6 +80,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Queue legth"
+        android:textColor="#070707"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/pLength"
         app:layout_constraintStart_toStartOf="@+id/viewt" />
 
@@ -107,7 +111,7 @@
         app:layout_constraintTop_toBottomOf="@+id/pAvailable" />
 
     <Button
-        android:id="@+id/updatePetrol"
+        android:id="@+id/pJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -121,35 +125,35 @@
         android:textAllCaps="false"
         android:textColor="@color/primary_yellow"/>
 
-<!--    <Button-->
-<!--        android:id="@+id/button4"-->
-<!--        android:layout_width="121dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_marginStart="36dp"-->
-<!--        android:text="Exit before pump"-->
-<!--        android:textSize="10sp"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/viewt"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/updatePetrol"-->
-<!--        android:backgroundTint="@color/dark_background"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textColor="@color/primary_yellow"/>-->
+    <Button
+        android:id="@+id/pExitBefore"
+        android:layout_width="121dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="36dp"
+        android:text="Exit before pump"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@+id/viewt"
+        app:layout_constraintTop_toBottomOf="@+id/pJoin"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
 
 
-<!--    <Button-->
-<!--        android:id="@+id/button5"-->
-<!--        android:layout_width="126dp"-->
-<!--        android:layout_height="52dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:text="Exit after pump"-->
-<!--        android:textSize="10sp"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/viewt"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/button4"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/updatePetrol"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        android:backgroundTint="@color/dark_background"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textColor="@color/primary_yellow"/>-->
+    <Button
+        android:id="@+id/pExitAfter"
+        android:layout_width="126dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="20dp"
+        android:text="Exit after pump"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@+id/viewt"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/pExitBefore"
+        app:layout_constraintTop_toBottomOf="@+id/pJoin"
+        tools:ignore="MissingConstraints"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
 
     <View
         android:id="@+id/view2"
@@ -198,19 +202,11 @@
         android:layout_marginStart="44dp"
 
         android:text="Fuel status"
+        android:textColor="#040303"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/dAvailable"
         app:layout_constraintStart_toStartOf="@+id/view2"
-        tools:ignore="MissingConstraints"  />
-
-    <TextView
-        android:id="@+id/textView181"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="Queue legth"
-        app:layout_constraintStart_toStartOf="@+id/viewt"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"  />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView21"
@@ -219,6 +215,8 @@
         android:layout_marginStart="44dp"
         android:text="Queue legth"
 
+        android:textColor="#040303"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/dLength"
         app:layout_constraintStart_toStartOf="@+id/view2" />
 
@@ -261,7 +259,7 @@
 <!--        android:textColor="@color/primary_yellow"/>-->
 
     <Button
-        android:id="@+id/updateDiseal"
+        android:id="@+id/dJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
@@ -275,34 +273,34 @@
         android:textAllCaps="false"
         android:textColor="@color/primary_yellow"/>
 
-<!--    <Button-->
-<!--        android:id="@+id/button141"-->
-<!--        android:layout_width="121dp"-->
-<!--        android:layout_height="53dp"-->
-<!--        android:layout_marginStart="32dp"-->
-<!--        android:text="Exit before pump"-->
-<!--        android:textSize="10sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/view2"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/view2"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/updateDiseal"-->
-<!--        android:backgroundTint="@color/dark_background"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textColor="@color/primary_yellow"/>-->
+    <Button
+        android:id="@+id/dExitBefore"
+        android:layout_width="121dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="32dp"
+        android:text="Exit before pump"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/dJoin"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
 
-<!--    <Button-->
-<!--        android:id="@+id/button51"-->
-<!--        android:layout_width="126dp"-->
-<!--        android:layout_height="52dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:text="Exit after pump"-->
-<!--        android:textSize="10sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/view2"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/view2"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/updateDiseal"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        android:backgroundTint="@color/dark_background"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textColor="@color/primary_yellow"/>-->
+    <Button
+        android:id="@+id/dExitAfter"
+        android:layout_width="126dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="20dp"
+        android:text="Exit after pump"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/dJoin"
+        tools:ignore="MissingConstraints"
+        android:backgroundTint="@color/dark_background"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_yellow"/>
 
     <ImageButton
         android:id="@+id/dView"
@@ -325,5 +323,18 @@
         app:layout_constraintStart_toEndOf="@+id/pLength"
         app:layout_constraintTop_toBottomOf="@+id/pAvailable"
         app:srcCompat="@drawable/exinfo" />
+
+    <Button
+        android:id="@+id/refresh"
+        android:layout_width="93dp"
+        android:layout_height="37dp"
+        android:text="Refresh"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/viewt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

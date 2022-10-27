@@ -30,7 +30,7 @@ public class StationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(com.example.fuelapp.R.layout.activity_station);
 
-        btn1 = findViewById(R.id.updatePetrol);
+        btn1 = findViewById(R.id.pJoin);
         btn2 = findViewById(R.id.updateDiseal);
         txtPetrolAvailable = findViewById(R.id.pAvailable);
         txtDisealAvailable = findViewById(R.id.dAvailable);
