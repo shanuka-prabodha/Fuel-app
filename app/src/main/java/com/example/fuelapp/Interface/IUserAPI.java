@@ -27,7 +27,7 @@ public interface IUserAPI {
 
     //get station list api call
     @GET("api/Station")
-    Call<List<Station>> getStation();
+    Call<List<Station>> getAllStation();
 
     //get single user api call
     @GET("api/user/get/{id}")
@@ -41,4 +41,6 @@ public interface IUserAPI {
     //get single station api call
     @GET("api/station/get/{id}")
     Call<StationResponse> getStations(@Path("id") String id);
+
+
 }

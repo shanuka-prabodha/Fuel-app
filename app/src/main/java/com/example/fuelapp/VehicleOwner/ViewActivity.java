@@ -45,7 +45,11 @@ public class ViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
 
-        getStationDataByID("63540401d26b8b17b97cdd6e");
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("id");
+
+        getStationDataByID(id);
+
         txtPetrolAvailable = findViewById(R.id.pAvailable);
         txtDisealAvailable = findViewById(R.id.dAvailable);
         txtPetrolLength = findViewById(R.id.pLength);
@@ -101,8 +105,8 @@ public class ViewActivity extends AppCompatActivity {
 
 
         //Get searched Data
-//        Intent intent = getIntent();
-//        String id = intent.getStringExtra("id");
+
+
 //        String name = intent.getStringExtra("name");
 //        boolean ispetrol = intent.getBooleanExtra("ispetrol", true);
 //        int pbike = intent.getIntExtra("pbike", 0);
