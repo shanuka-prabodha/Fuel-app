@@ -90,17 +90,17 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.searchHolder> {
 
         @Override
         public void onClick(View view) {
-//            if (mListener != null) {
-//
-//            }
+            if (mListener != null) {
+                int position = getAdapterPosition();
 
-            int position = getAdapterPosition();
+                System.out.println("position " + position);
 
-            System.out.println("position "+ position );
-
-            if (position != RecyclerView.NO_POSITION) {
-                mListener.onItemClick(position);
+                if (position != RecyclerView.NO_POSITION) {
+                    mListener.onItemClick(position);
+                }
             }
+
+
         }
 
 

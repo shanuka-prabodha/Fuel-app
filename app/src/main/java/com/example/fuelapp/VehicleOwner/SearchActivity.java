@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.fuelapp.Interface.IUserAPI;
 import com.example.fuelapp.Login.LoginActivity;
+import com.example.fuelapp.Login.StorageManager;
 import com.example.fuelapp.Model.Controller;
 import com.example.fuelapp.Model.Station;
 import com.example.fuelapp.Model.TimeTrack;
@@ -48,6 +49,13 @@ public class SearchActivity extends AppCompatActivity implements SearchAdapter.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+
+//        StorageManager storeManager = new StorageManager(getApplicationContext());
+//        storeManager.getToken();
+//
+//        System.out.println( "storeManager.getToken() +++++++++++++++++++++++++++++++++");
+//        System.out.println( storeManager.getToken());
 
         recyclerView = findViewById(R.id.searchrecycleview);
         searchView = findViewById(R.id.searchview);
@@ -95,42 +103,43 @@ public class SearchActivity extends AppCompatActivity implements SearchAdapter.O
         Station station4 = new Station("4", "Kandy", true, 2, 1, 4, true, 2, 4, 1, "2022-4-20 12.00PM", "2022-4-20 12.00PM");
 
 
-//        stationList.add(station1);
-//        stationList.add(station2);
-//        stationList.add(station3);
-//        stationList.add(station4);
+        stationList.add(station1);
+        stationList.add(station2);
+        stationList.add(station3);
+        stationList.add(station4);
+        SearchAdapter searchAdapter = new SearchAdapter(getApplicationContext(), stationList);
+        recyclerView.setAdapter(searchAdapter);
 
-
-        IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
-        Call<List<Station>> call = iUserAPI.getAllStation();
-
-        call.enqueue(new Callback<List<Station>>() {
-            @Override
-            public void onResponse(Call<List<Station>> call, Response<List<Station>> response) {
-                Log.e("StationActivity", "Response code " + response.code());
-
-                if (response.code() == 200) {
-
-                    for (Station station : response.body()) {
-                        stationList.add(station);
-                    }
-
-                    SearchAdapter searchAdapter = new SearchAdapter(getApplicationContext(), stationList);
-                    recyclerView.setAdapter(searchAdapter);
-
-
-                } else {
-
-                }
-
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Station>> call, Throwable t) {
-                Log.e("RegisterActivity", String.valueOf(t));
-            }
-        });
+//        IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
+//        Call<List<Station>> call = iUserAPI.getAllStation();
+//
+//        call.enqueue(new Callback<List<Station>>() {
+//            @Override
+//            public void onResponse(Call<List<Station>> call, Response<List<Station>> response) {
+//                Log.e("StationActivity", "Response code " + response.code());
+//
+//                if (response.code() == 200) {
+//
+//                    for (Station station : response.body()) {
+//                        stationList.add(station);
+//                    }
+//
+//                    SearchAdapter searchAdapter = new SearchAdapter(getApplicationContext(), stationList);
+//                    recyclerView.setAdapter(searchAdapter);
+//
+//
+//                } else {
+//
+//                }
+//
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Station>> call, Throwable t) {
+//                Log.e("RegisterActivity", String.valueOf(t));
+//            }
+//        });
 
 
     }

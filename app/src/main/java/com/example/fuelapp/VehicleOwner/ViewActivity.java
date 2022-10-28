@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.fuelapp.Interface.IUserAPI;
+import com.example.fuelapp.Login.StorageManager;
 import com.example.fuelapp.Model.Controller;
 import com.example.fuelapp.R;
 import com.example.fuelapp.Station.StationResponse;
@@ -44,6 +45,12 @@ public class ViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
+
+        StorageManager storeManager = new StorageManager(getApplicationContext());
+        storeManager.getToken();
+
+        System.out.println( "storeManager.getToken() shanuka +++++++++++++++++++++++++++++++++");
+        System.out.println( storeManager.getToken());
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");

@@ -15,6 +15,14 @@ public class DBMaster {
         public static final String TABLE_NAME = "login_table";
         public static final String COLUMN_EMAIL = "email";
         public static final String COLUMN_PASSWORD = "password";
+        public static final String COLUMN_FUEL_TYPE = "type";
+        public static final String COLUMN_ID = "id";
+    }
+
+    public static class LoginStation implements BaseColumns {
+        public static final String TABLE_NAME = "login_station_table";
+        public static final String COLUMN_EMAIL = "email";
+        public static final String COLUMN_PASSWORD = "password";
         public static final String COLUMN_ID = "id";
     }
 
