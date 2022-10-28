@@ -1,6 +1,7 @@
 package com.example.fuelapp.VehicleOwner;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -24,8 +25,6 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.searchHolder> {
 
     ArrayList<Station> stationList;
     Context mcontext;
-    Button btnview;
-    private OnItemClickListener mListener;
 
     public SearchAdapter(Context mcontext, ArrayList<Station> stationList) {
         this.stationList = stationList;
@@ -47,21 +46,26 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.searchHolder> {
         if (stationList.get(position).getIspetrol()) {
             holder.pstatus.setText("Available");
             holder.pstatus.setBackgroundColor(Color.parseColor("#3ddc84"));
-        }
-        else {
+        } else {
             holder.pstatus.setText("Finished");
             holder.pstatus.setBackgroundColor(Color.parseColor("#b00020"));
         }
         if (stationList.get(position).getIsdiesel()) {
             holder.dStatus.setText("Available");
             holder.dStatus.setBackgroundColor(Color.parseColor("#3ddc84"));
-        }
-        else {
+        } else {
             holder.dStatus.setText("Finished");
             holder.dStatus.setBackgroundColor(Color.parseColor("#b00020"));
         }
 
-
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.view.getContext(), ViewActivity.class);
+                intent.putExtra("key", stationList.get(position).getId());
+                holder.view.getContext().startActivity(intent);
+            }
+        });
 
 
     }
@@ -72,60 +76,21 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.searchHolder> {
     }
 
 
-    class searchHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
+    class searchHolder extends RecyclerView.ViewHolder {
         TextView txtName, pstatus, dStatus;
+        Button view;
 
         public searchHolder(@NonNull View itemView) {
             super(itemView);
             txtName = (TextView) itemView.findViewById(R.id.location);
             pstatus = (TextView) itemView.findViewById(R.id.pt);
             dStatus = (TextView) itemView.findViewById(R.id.ds);
-
-
-            itemView.setOnClickListener(this);
-
-            itemView.setOnCreateContextMenuListener(this);
-        }
-
-
-        @Override
-        public void onClick(View view) {
-            if (mListener != null) {
-                int position = getAdapterPosition();
-
-                System.out.println("position " + position);
-
-                if (position != RecyclerView.NO_POSITION) {
-                    mListener.onItemClick(position);
-                }
-            }
+            view = (Button) itemView.findViewById(R.id.btn_view);
 
 
         }
-
-
-        @Override
-        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-
-        }
-
-        @Override
-        public boolean onMenuItemClick(MenuItem menuItem) {
-            return false;
-        }
-
 
     }
 
-
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-
-        mListener = listener;
-
-    }
 
 }

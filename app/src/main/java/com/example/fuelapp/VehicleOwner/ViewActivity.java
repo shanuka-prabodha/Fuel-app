@@ -24,23 +24,24 @@ import retrofit2.Response;
 
 public class ViewActivity extends AppCompatActivity {
 
-    private TextView txtPetrolAvailable, txtDisealAvailable, txtPetrolLength, txtDisealLength ;
-    Button btnMoreInfo, btnDMoreInfo , refreshPage;
+    private TextView txtPetrolAvailable, txtDisealAvailable, txtPetrolLength, txtDisealLength;
+    Button btnMoreInfo, btnDMoreInfo, refreshPage;
     ImageButton btnPetrolView, btnDisealView;
-    TextView  locationName;
-    Button ptJoin , dsJoin , ptExitBefore, ptExitAfter , dsExitBefore , dsExitAfter;
+    TextView locationName;
+    Button ptJoin, dsJoin, ptExitBefore, ptExitAfter, dsExitBefore, dsExitAfter;
 
     int pbike_api = 0;
     int pcar_api = 0;
     int pother_api = 0;
     int dbus_api = 0;
     int dvan_api = 0;
-    int dother_api =0;
-    String pnextarival_api ="";
-    String dnextarival_api ="";
+    int dother_api = 0;
+    String pnextarival_api = "";
+    String dnextarival_api = "";
 
-    Integer pqueue ;
-    Integer dqueue ;
+    Integer pqueue;
+    Integer dqueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,11 +50,12 @@ public class ViewActivity extends AppCompatActivity {
         StorageManager storeManager = new StorageManager(getApplicationContext());
         storeManager.getToken();
 
-        System.out.println( "storeManager.getToken() shanuka +++++++++++++++++++++++++++++++++");
-        System.out.println( storeManager.getToken());
+        System.out.println("storeManager.getToken() shanuka +++++++++++++++++++++++++++++++++");
+        System.out.println(storeManager.getToken());
 
         Intent intent = getIntent();
-        String id = intent.getStringExtra("id");
+        String id = intent.getStringExtra("key");
+
 
         getStationDataByID(id);
 
@@ -76,8 +78,7 @@ public class ViewActivity extends AppCompatActivity {
         dsExitAfter = findViewById(R.id.dExitAfter);
 
 
-
-        // Join button invisible and visible
+        // =============Join button invisible and visible START=================
 
         ptExitBefore.setVisibility(View.INVISIBLE);
         ptExitAfter.setVisibility(View.INVISIBLE);
@@ -92,7 +93,7 @@ public class ViewActivity extends AppCompatActivity {
                 ptExitAfter.setVisibility(View.VISIBLE);
                 ptJoin.setVisibility(View.INVISIBLE);
 
-                getStationDataByID("1");
+                getStationDataByID(id);
             }
         });
 
@@ -103,100 +104,61 @@ public class ViewActivity extends AppCompatActivity {
                 dsExitBefore.setVisibility(View.VISIBLE);
                 dsExitAfter.setVisibility(View.VISIBLE);
                 dsJoin.setVisibility(View.INVISIBLE);
-                getStationDataByID("1");
+                getStationDataByID(id);
             }
         });
 
 
+        ptExitBefore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ptExitBefore.setVisibility(View.INVISIBLE);
+                ptExitAfter.setVisibility(View.INVISIBLE);
+                ptJoin.setVisibility(View.VISIBLE);
+                getStationDataByID(id);
+            }
+        });
 
+        ptExitAfter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ptExitBefore.setVisibility(View.INVISIBLE);
+                ptExitAfter.setVisibility(View.INVISIBLE);
+                ptJoin.setVisibility(View.VISIBLE);
+                getStationDataByID(id);
+            }
+        });
 
+        dsExitBefore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dsExitBefore.setVisibility(View.INVISIBLE);
+                dsExitAfter.setVisibility(View.INVISIBLE);
+                dsJoin.setVisibility(View.VISIBLE);
+                getStationDataByID(id);
+            }
+        });
 
-        //Get searched Data
+        dsExitAfter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dsExitBefore.setVisibility(View.INVISIBLE);
+                dsExitAfter.setVisibility(View.INVISIBLE);
+                dsJoin.setVisibility(View.VISIBLE);
+                getStationDataByID(id);
+            }
+        });
 
+        // =============Join button invisible and visible END=================
 
-//        String name = intent.getStringExtra("name");
-//        boolean ispetrol = intent.getBooleanExtra("ispetrol", true);
-//        int pbike = intent.getIntExtra("pbike", 0);
-//        int pcar = intent.getIntExtra("pcar", 0);
-//        int pother = intent.getIntExtra("pother", 0);
-//        boolean isdiesel = intent.getBooleanExtra("isdiesel", true);
-//        int dbus = intent.getIntExtra("dbus", 0);
-//        int dvan = intent.getIntExtra("dvan", 0);
-//        int dother = intent.getIntExtra("dother", 0);
-//        String pnextarival = intent.getStringExtra("pnextarival");
-//        String dnextarival = intent.getStringExtra("dnextarival");
-
-//        if (ispetrol) {
-//            txtPetrolAvailable.setText("Available");
-//        } else {
-//            txtPetrolAvailable.setText("Finished");
-//        }
-//        if (isdiesel) {
-//            txtDisealAvailable.setText("Available");
-//        } else {
-//            txtDisealAvailable.setText("Finished");
-//        }
-//
-//
-//        int petrolQueue = pbike+ pcar + pother;
-//        int disealQueue = dbus + dvan + dother;
-//
-//        Integer pqueue = new Integer(petrolQueue);
-//        Integer dqueue = new Integer(disealQueue);
-//
-//        txtPetrolLength.setText(pqueue.toString());
-//        txtDisealLength.setText(dqueue.toString());
-//        locationName.setText(name);
-
-
-
-
-
-
-//        IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
-//        Call<StationResponse> call = iUserAPI.getStations("63540401d26b8b17b97cdd6e");
-//
-//        call.enqueue(new Callback<StationResponse>() {
-//            @Override
-//            public void onResponse(Call<StationResponse> call, Response<StationResponse> response) {
-//                Log.e("StationActivity", "Response code " + response.code());
-//
-//                if (response.code() == 200) {
-//                    if (response.body().getData().getIspetrol()) {
-//                        txtPetrolAvailable.setText("Available");
-//                    } else {
-//                        txtPetrolAvailable.setText("Finished");
-//                    }
-//
-//                    if (response.body().getData().getIsdiesel()) {
-//                        txtDisealAvailable.setText("Available");
-//                    } else {
-//                        txtDisealAvailable.setText("Finished");
-//                    }
-//
-//
-//
-//                } else {
-//                    Log.e("StationActivity", "Exit ");
-////                    Intent intent = new Intent(StationActivity.this, SearchActivity.class);
-////                    startActivity(intent);
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<StationResponse> call, Throwable t) {
-//                Log.e("RegisterActivity", String.valueOf(t));
-//            }
-//        });
 
         //page refresh
         refreshPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                getStationDataByID("63540401d26b8b17b97cdd6e");
+                getStationDataByID(id);
+                txtPetrolLength.setText("100");
             }
         });
 
@@ -222,7 +184,7 @@ public class ViewActivity extends AppCompatActivity {
         btnPetrolView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPetrolView("12", Integer.toString(pcar_api), Integer.toString(pbike_api), Integer.toString(pother_api) ,pnextarival_api );
+                showPetrolView("12", Integer.toString(pcar_api), Integer.toString(pbike_api), Integer.toString(pother_api), pnextarival_api);
 
             }
         });
@@ -230,15 +192,15 @@ public class ViewActivity extends AppCompatActivity {
         btnDisealView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDisealView("10",  Integer.toString(dbus_api), Integer.toString(dvan_api), Integer.toString(dother_api),dnextarival_api);
+                showDisealView("10", Integer.toString(dbus_api), Integer.toString(dvan_api), Integer.toString(dother_api), dnextarival_api);
 
             }
         });
 
     }
 
-    private void getStationDataByID(String id){
-                IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
+    private void getStationDataByID(String id) {
+        IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
         Call<StationResponse> call = iUserAPI.getStations(id);
 
         call.enqueue(new Callback<StationResponse>() {
@@ -259,37 +221,33 @@ public class ViewActivity extends AppCompatActivity {
                         txtDisealAvailable.setText("Finished");
                     }
 
-                    int petrolQueue = response.body().getData().getPcar()+ response.body().getData().getPbike() + response.body().getData().getPother();
+                    int petrolQueue = response.body().getData().getPcar() + response.body().getData().getPbike() + response.body().getData().getPother();
                     int disealQueue = response.body().getData().getDvan() + response.body().getData().getDbus() + response.body().getData().getDother();
 
-                     pqueue = new Integer(petrolQueue);
-                     dqueue = new Integer(disealQueue);
+                    pqueue = new Integer(petrolQueue);
+                    dqueue = new Integer(disealQueue);
 
                     txtPetrolLength.setText(pqueue.toString());
                     txtDisealLength.setText(dqueue.toString());
                     locationName.setText(response.body().getData().getName());
 
-                     pbike_api = response.body().getData().getPbike();
-                     pcar_api = response.body().getData().getPcar();
-                     pother_api = response.body().getData().getPother();
-                     dbus_api = response.body().getData().getDvan();
-                     dvan_api = response.body().getData().getDbus();
-                     dother_api =response.body().getData().getDother();
-                    pnextarival_api =response.body().getData().getPnextarival();
-                    dnextarival_api =response.body().getData().getDnextarival();
+                    pbike_api = response.body().getData().getPbike();
+                    pcar_api = response.body().getData().getPcar();
+                    pother_api = response.body().getData().getPother();
+                    dbus_api = response.body().getData().getDvan();
+                    dvan_api = response.body().getData().getDbus();
+                    dother_api = response.body().getData().getDother();
+                    pnextarival_api = response.body().getData().getPnextarival();
+                    dnextarival_api = response.body().getData().getDnextarival();
 
 
                 } else {
                     Log.e("StationActivity", "Exit ");
-//                    Intent intent = new Intent(StationActivity.this, SearchActivity.class);
-//                    startActivity(intent);
 
-                    txtPetrolLength.setText("100");
                 }
 
 
             }
-
 
 
             @Override
@@ -340,7 +298,7 @@ public class ViewActivity extends AppCompatActivity {
 
     }
 
-    private void showDisealView(final String Id, final String busLength, final String vanLength,  final String otherLength, final String next) {
+    private void showDisealView(final String Id, final String busLength, final String vanLength, final String otherLength, final String next) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();

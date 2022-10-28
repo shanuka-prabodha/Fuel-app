@@ -34,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.Query;
 
-public class SearchActivity extends AppCompatActivity implements SearchAdapter.OnItemClickListener, PopupMenu.OnMenuItemClickListener {
+public class SearchActivity extends AppCompatActivity {
 
     //buttons and text fields initialization
 
@@ -67,7 +67,7 @@ public class SearchActivity extends AppCompatActivity implements SearchAdapter.O
 
         searchAdapter = new SearchAdapter(SearchActivity.this, stationList);
         recyclerView.setAdapter(searchAdapter);
-        searchAdapter.setOnItemClickListener(SearchActivity.this);
+
 
     }
 
@@ -97,49 +97,32 @@ public class SearchActivity extends AppCompatActivity implements SearchAdapter.O
 
         stationList = new ArrayList<>();
 
-        Station station1 = new Station("1", "Peradeniya", true, 2, 1, 4, true, 2, 4, 1, "2022-4-20 12.00PM", "2022-4-20 12.00PM");
-        Station station2 = new Station("2", "Gannoruwa", false, 2, 1, 4, true, 2, 4, 1, "2022-4-20 12.00PM", "2022-4-20 12.00PM");
-        Station station3 = new Station("3", "Pilimatalawa", true, 2, 1, 4, false, 2, 4, 1, "2022-4-20 12.00PM", "2022-4-20 12.00PM");
-        Station station4 = new Station("4", "Kandy", true, 2, 1, 4, true, 2, 4, 1, "2022-4-20 12.00PM", "2022-4-20 12.00PM");
+        IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
+        Call<List<Station>> call = iUserAPI.getAllStation();
 
+        call.enqueue(new Callback<List<Station>>() {
+            @Override
+            public void onResponse(Call<List<Station>> call, Response<List<Station>> response) {
+                Log.e("StationActivity", "Response code " + response.code());
 
-        stationList.add(station1);
-        stationList.add(station2);
-        stationList.add(station3);
-        stationList.add(station4);
-        SearchAdapter searchAdapter = new SearchAdapter(getApplicationContext(), stationList);
-        recyclerView.setAdapter(searchAdapter);
+                if (response.code() == 200) {
 
-//        IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
-//        Call<List<Station>> call = iUserAPI.getAllStation();
-//
-//        call.enqueue(new Callback<List<Station>>() {
-//            @Override
-//            public void onResponse(Call<List<Station>> call, Response<List<Station>> response) {
-//                Log.e("StationActivity", "Response code " + response.code());
-//
-//                if (response.code() == 200) {
-//
-//                    for (Station station : response.body()) {
-//                        stationList.add(station);
-//                    }
-//
-//                    SearchAdapter searchAdapter = new SearchAdapter(getApplicationContext(), stationList);
-//                    recyclerView.setAdapter(searchAdapter);
-//
-//
-//                } else {
-//
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Station>> call, Throwable t) {
-//                Log.e("RegisterActivity", String.valueOf(t));
-//            }
-//        });
+                    for (Station station : response.body()) {
+                        stationList.add(station);
+                    }
+                    SearchAdapter searchAdapter = new SearchAdapter(getApplicationContext(), stationList);
+                    recyclerView.setAdapter(searchAdapter);
+
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Station>> call, Throwable t) {
+                Log.e("RegisterActivity", String.valueOf(t));
+            }
+        });
 
 
     }
@@ -156,30 +139,5 @@ public class SearchActivity extends AppCompatActivity implements SearchAdapter.O
         recyclerView.setAdapter(searchAdapter);
     }
 
-    @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        return false;
-    }
 
-    @Override
-    public void onItemClick(int position) {
-
-        Station selectedItem = stationList.get(position);
-        System.out.println(selectedItem.getName());
-
-        Intent in = new Intent(SearchActivity.this, ViewActivity.class);
-        in.putExtra("id", selectedItem.getId());
-        in.putExtra("name", selectedItem.getName());
-        in.putExtra("isPetrol", selectedItem.getIspetrol());
-        in.putExtra("isDiseal", selectedItem.getIsdiesel());
-        in.putExtra("pbike", selectedItem.getPbike());
-        in.putExtra("pcar", selectedItem.getPcar());
-        in.putExtra("pother", selectedItem.getPother());
-        in.putExtra("dbus", selectedItem.getDbus());
-        in.putExtra("dvan", selectedItem.getDvan());
-        in.putExtra("dother", selectedItem.getDother());
-        in.putExtra("pnextarival", selectedItem.getPnextarival());
-        in.putExtra("dnextarival", selectedItem.getDnextarival());
-        startActivity(in);
-    }
 }
