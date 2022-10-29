@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -20,6 +21,7 @@ import com.example.fuelapp.Model.UserLoginResponse;
 import com.example.fuelapp.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,6 +37,8 @@ public class StationRegisterActivity extends AppCompatActivity {
     private TextView password;
     private Button register;
     List<String> stationList;
+
+    String stationId;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,7 @@ public class StationRegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
               //  Toast.makeText(StationRegisterActivity.this, "Register", Toast.LENGTH_SHORT).show();
                 onRegister();
+//                Toast.makeText(StationRegisterActivity.this, stationId, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -102,7 +107,7 @@ public class StationRegisterActivity extends AppCompatActivity {
             return;
         }
 
-        User user = new User(email, password,"admin",city,company,"63540401d26b8b17b97cdd6e"); //create user object with overloaded constructor
+        User user = new User(email, password,"admin","",company,"63540401d26b8b17b97cdd6e"); //create user object with overloaded constructor
 
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
         Call<UserLoginResponse> call = iUserAPI.SaveUser(user); //Station user registration api call
@@ -144,15 +149,32 @@ public class StationRegisterActivity extends AppCompatActivity {
 
                 if (response.code() == 200) {
 
+                    ArrayList<Station> stations = new ArrayList<>();
+
                     for (Station station : response.body()) {
-                        stationList.add(station.getName());
+                        stations.add(new Station(station.getId(), station.getName()));
                     }
 
-                    ArrayAdapter<String> dataAdapter;
-                    dataAdapter = new ArrayAdapter<>(StationRegisterActivity.this,android.R.layout.simple_spinner_item,stationList);
-                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+                    ArrayAdapter<Station>  dataAdapter = new ArrayAdapter<>(StationRegisterActivity.this,android.R.layout.simple_spinner_item,stations);
+//                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     city.setAdapter(dataAdapter);
+
+
+                    city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            Station stn = (Station) adapterView.getItemAtPosition(i);
+
+                            stationId= stn.getId();
+//                            Toast.makeText(StationRegisterActivity.this, stn.getId(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
 
                 } else {
 

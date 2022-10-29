@@ -155,4 +155,14 @@ public class Station {
         this.pnextarival = pnextarival;
         this.dnextarival = dnextarival;
     }
+
+    public Station(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
