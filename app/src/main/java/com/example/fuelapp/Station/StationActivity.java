@@ -1,5 +1,6 @@
 package com.example.fuelapp.Station;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,14 +9,19 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fuelapp.Interface.IUserAPI;
+import com.example.fuelapp.Login.LoginActivity;
 import com.example.fuelapp.Model.Controller;
 import com.example.fuelapp.R;
+import com.example.fuelapp.VehicleOwner.SearchActivity;
 
 import retrofit2.Call;
 
@@ -107,5 +113,23 @@ public class StationActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+
+        Intent in = new Intent(StationActivity.this, LoginActivity.class);
+        startActivity(in);
+
+        Toast.makeText(this, "You logged out", Toast.LENGTH_SHORT).show();
+
+        return super.onOptionsItemSelected(item);
     }
 }
