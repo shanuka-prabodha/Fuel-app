@@ -48,5 +48,13 @@ public class StorageManager {
         return pref.getString("FuelType", "");
     }
 
+    public void setAdminStation(String station) {
+        editor.putString("AdminStation", station);
+        editor.commit();
+    }
+    public String getAdminStation() {
+        return pref.getString("AdminStation", "");
+    }
+
 }
 

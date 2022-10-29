@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 //User model class
 public class User {
 
-    @SerializedName("_id") //mongo db document id
+    @SerializedName("_id")
     @Expose
     private String id;
     @SerializedName("email")
@@ -19,6 +19,9 @@ public class User {
     @SerializedName("role")
     @Expose
     private String role;
+    @SerializedName("station")
+    @Expose
+    private String station;
     @SerializedName("fueltype")
     @Expose
     private String fueltype;
@@ -34,6 +37,7 @@ public class User {
     @SerializedName("fuelcompany")
     @Expose
     private String fuelcompany;
+
 
     public User() {
 
@@ -69,6 +73,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getStation() {
+        return station;
+    }
+
+    public void setStation(String station) {
+        this.station = station;
     }
 
     public String getFueltype() {
@@ -111,15 +123,16 @@ public class User {
         this.fuelcompany = fuelcompany;
     }
 
-    public User(String email, String password, String role, String city, String fuelcompany) {
+    public User(String email, String password, String role, String city, String fuelcompany, String station) {
         this.email = email;
         this.password = password;
         this.role = role;
         this.city = city;
         this.fuelcompany = fuelcompany;
+        this.station = station;
     }
 
-    public User(String email, String password, String role, String fueltype, String vehicletype, String vehicleno) {
+    public User(String email, String password, String role, String fueltype, String vehicletype, String vehicleno, String city) {
         this.email = email;
         this.password = password;
         this.role = role;
@@ -129,4 +142,6 @@ public class User {
         this.city = city;
         this.fuelcompany = fuelcompany;
     }
+
+
 }

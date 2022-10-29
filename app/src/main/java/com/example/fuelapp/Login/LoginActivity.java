@@ -140,6 +140,10 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
 
                     } else {
+
+                        storeManager.setAdminStation(response.body().getData().getStation());
+
+                       // Toast.makeText(LoginActivity.this, response.body().getData().getStation(), Toast.LENGTH_SHORT).show();
                         DBHandler dbHandler = new DBHandler(LoginActivity.this);
 
                         long val = 0;

@@ -441,6 +441,10 @@ public class ViewActivity extends AppCompatActivity {
 
         Intent in = new Intent(ViewActivity.this, LoginActivity.class);
         startActivity(in);
+        StorageManager storeManager = new StorageManager(getApplicationContext());
+        storeManager.setToken("");
+        storeManager.setFuelType("");
+        storeManager.setQueJoin(false ,"");
 
         Toast.makeText(this, "You logged out", Toast.LENGTH_SHORT).show();
 

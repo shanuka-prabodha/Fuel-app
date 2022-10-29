@@ -27,22 +27,31 @@ import android.widget.Toast;
 
 import com.example.fuelapp.Interface.IUserAPI;
 import com.example.fuelapp.Login.LoginActivity;
+import com.example.fuelapp.Login.StorageManager;
 import com.example.fuelapp.Model.Controller;
+import com.example.fuelapp.Model.UserLoginResponse;
 import com.example.fuelapp.R;
 import com.example.fuelapp.VehicleOwner.SearchActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StationActivity extends AppCompatActivity {
 
     //buttons and text fields initialization
     private Button btn1, btn2;
-    private TextView txtPetrolAvailable, txtDisealAvailable, txtPetrolLength, txtDisealLength;
+    private TextView txtPetrolAvailable, txtDisealAvailable, txtPetrolLength, txtDisealLength , stationName;
     private DatePickerDialog.OnDateSetListener mDateSetListener1;
     private TimePickerDialog.OnTimeSetListener mTimeSetListener;
 
+    Station station = new Station();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,35 +64,31 @@ public class StationActivity extends AppCompatActivity {
         txtDisealAvailable = findViewById(R.id.dAvailable);
         txtPetrolLength = findViewById(R.id.pLength);
         txtDisealLength = findViewById(R.id.dLength);
+        stationName = findViewById(R.id.locationName);
 
         Intent intent = getIntent();
-        System.out.println(intent.getStringExtra("station"));
+        StorageManager storeManager = new StorageManager(getApplicationContext());
 
-        IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
-        Call<StationResponse> call = iUserAPI.getStations("63540401d26b8b17b97cdd6e");
-
-        Log.e("StationActivity", "Dinisuru ");
+        getStationDataByID(storeManager.getAdminStation());
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                showUpdate("12", "Available", "2020-08-7 9.00 A.M.");
+                showUpdate("12", station.getIspetrol() ? "Available" : "Finished", "2020-08-7 9.00 A.M." , "ispetrol" , storeManager);
             }
         });
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showUpdate("23", "Finished", "2020-08-7 9.00 A.M.");
+                showUpdate("23", station.getIsdiesel() ? "Available" : "Finished", "2020-08-7 9.00 A.M.","isdiesel",storeManager);
             }
         });
-
 
     }
 
     //
-    private void showUpdate(final String Id, final String status, String time) {
+    private void showUpdate(final String Id, final String status, String time , String fuelType , StorageManager storeManager) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -92,8 +97,8 @@ public class StationActivity extends AppCompatActivity {
         builder.setView(view);
 
         Spinner fuelStatus = view.findViewById(R.id.status);
-//        TextView statusFuel = view.findViewById(R.id.status);
-//        fuelStatus.set(status);
+        TextView txtTime = view.findViewById(R.id.time);
+        TextView txtDate = view.findViewById(R.id.nextDate);
 
         //Date picker
         final EditText dateArrival = (EditText) view.findViewById(R.id.nextDate);
@@ -112,6 +117,7 @@ public class StationActivity extends AppCompatActivity {
                         mDateSetListener1,
                         year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getDatePicker().setMinDate(cal.getTimeInMillis());
                 dialog.show();
             }
         });
@@ -163,7 +169,6 @@ public class StationActivity extends AppCompatActivity {
 
         final Button button = (Button) view.findViewById(R.id.queueOkBtn);
 
-
         builder.setTitle("" + status);
 
         final AlertDialog alert = builder.create();
@@ -173,19 +178,48 @@ public class StationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String status = fuelStatus.getSelectedItem().toString().trim();
-                String time = timeArrival.getText().toString().trim();
+                String time = timeArrival.getText().toString();
+                String date = dateArrival.getText().toString();
+
 
                 if (TextUtils.isEmpty(status)) {
 //                    fuelStatus.seter("Required");
                     timeArrival.setError("Required");
                     return;
                 }
-
-                if (TextUtils.isEmpty(time)) {
-//                    fuelStatus.setError("Required");
+                if(TextUtils.isEmpty(date)){
+                  //  dateArrival.setError("Required");
                     return;
                 }
-                alert.dismiss();
+                String newTime = time.split("\\.")[0] + ":" + time.substring(3, 5);
+                String newDate = date.split("/")[2] + "-" + date.split("/")[0] + "-" + date.split("/")[1] + " " + newTime;
+
+                Boolean fuelStatus = status.equals("Available") ? true : false;
+
+                IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
+                //call login api
+                Call<StationResponse> call = iUserAPI.updateStationDetails(storeManager.getAdminStation(),fuelStatus,fuelType,newDate);
+
+                call.enqueue(new Callback<StationResponse>() {
+                    @Override
+                    public void onResponse(Call<StationResponse> call, Response<StationResponse> response) {
+                        if (response.code() == 200) {
+                            Toast.makeText(StationActivity.this, "Updated", Toast.LENGTH_SHORT).show();
+                            getStationDataByID(storeManager.getAdminStation());
+                            alert.dismiss();
+                        } else {
+                            Toast.makeText(StationActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<StationResponse> call, Throwable t) {
+                        Toast.makeText(StationActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+
             }
         });
 
@@ -209,4 +243,40 @@ public class StationActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void getStationDataByID(String id){
+
+        IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
+        Call<StationResponse> call = iUserAPI.getStations(id);
+
+        call.enqueue(new Callback<StationResponse>() {
+            @Override
+            public void onResponse(Call<StationResponse> call, Response<StationResponse> response) {
+                Log.e("StationActivity", "getStationDataByID Response code " + response.code());
+
+                if (response.code() == 200) {
+                    Log.e("StationActivity", "StationCode " + response.body().getData().getId());
+                    station = response.body().getData();
+
+                    txtPetrolAvailable.setText(response.body().getData().getIspetrol() ? "Available" : "Not Available");
+                    txtDisealAvailable.setText(response.body().getData().getIsdiesel() ? "Available" : "Not Available");
+                    txtPetrolLength.setText(response.body().getData().getPnextarival());
+                    txtDisealLength.setText(response.body().getData().getDnextarival());
+                    stationName.setText(response.body().getData().getName());
+
+                } else {
+                    Log.e("StationActivity", "Error  " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StationResponse> call, Throwable t) {
+                Log.e("RegisterActivity", String.valueOf(t));
+            }
+        });
+    }
+
+
+
+
 }

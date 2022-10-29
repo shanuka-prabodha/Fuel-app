@@ -81,7 +81,7 @@ public class VehicleRegisterActivity extends AppCompatActivity {
         return;
          }
 
-        User user = new User(email, password,"user",fuelType,vehicleType,vehicleNo);//create user object with overloaded constructor
+        User user = new User(email, password,"user",fuelType,vehicleType,vehicleNo , "");//create user object with overloaded constructor
 
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
         Call<UserLoginResponse> call = iUserAPI.SaveUser(user); // save user details to the database

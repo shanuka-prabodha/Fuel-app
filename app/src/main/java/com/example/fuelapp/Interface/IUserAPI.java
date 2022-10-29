@@ -46,4 +46,7 @@ public interface IUserAPI {
     @POST("api/station/updateQue/{id}/{type}")
     Call<StationResponse> updateStationQue(@Path("id") String id,@Path("type") int type ,@Body User user);
 
+    @PUT("api/station/update/{id}/{available}/{type}/{date}")
+    Call<StationResponse> updateStationDetails(@Path("id") String id,@Path("available") Boolean available,@Path("type") String type,@Path("date") String date);
+
 }
