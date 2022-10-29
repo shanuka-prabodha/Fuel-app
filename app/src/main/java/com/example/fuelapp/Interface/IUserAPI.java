@@ -13,6 +13,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface IUserAPI {
@@ -42,5 +43,7 @@ public interface IUserAPI {
     @GET("api/station/get/{id}")
     Call<StationResponse> getStations(@Path("id") String id);
 
+    @POST("api/station/updateQue/{id}/{type}")
+    Call<StationResponse> updateStationQue(@Path("id") String id,@Path("type") int type ,@Body User user);
 
 }

@@ -95,10 +95,10 @@ public class SearchActivity extends AppCompatActivity implements SearchAdapter.O
         Station station4 = new Station("4", "Kandy", true, 2, 1, 4, true, 2, 4, 1, "2022-4-20 12.00PM", "2022-4-20 12.00PM");
 
 
-//        stationList.add(station1);
-//        stationList.add(station2);
-//        stationList.add(station3);
-//        stationList.add(station4);
+        stationList.add(station1);
+        stationList.add(station2);
+        stationList.add(station3);
+        stationList.add(station4);
 
 
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
@@ -115,8 +115,10 @@ public class SearchActivity extends AppCompatActivity implements SearchAdapter.O
                         stationList.add(station);
                     }
 
-                    SearchAdapter searchAdapter = new SearchAdapter(getApplicationContext(), stationList);
-                    recyclerView.setAdapter(searchAdapter);
+                    System.out.println(stationList);
+
+//                    SearchAdapter searchAdapter = new SearchAdapter(getApplicationContext(), stationList);
+//                    recyclerView.setAdapter(searchAdapter);
 
 
                 } else {
@@ -159,7 +161,7 @@ public class SearchActivity extends AppCompatActivity implements SearchAdapter.O
         System.out.println(selectedItem.getName());
 
         Intent in = new Intent(SearchActivity.this, ViewActivity.class);
-        in.putExtra("id", selectedItem.getId());
+        in.putExtra("id", "63540401d26b8b17b97cdd6e");
         in.putExtra("name", selectedItem.getName());
         in.putExtra("isPetrol", selectedItem.getIspetrol());
         in.putExtra("isDiseal", selectedItem.getIsdiesel());

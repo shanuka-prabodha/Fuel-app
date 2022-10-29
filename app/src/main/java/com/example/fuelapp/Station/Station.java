@@ -43,6 +43,12 @@ public class Station {
     @Expose
     private String dnextarival;
 
+    public Station(String id, String name, Boolean ispetrol, Integer pbike, Integer pcar, Integer pother, Boolean isdiesel, Integer dbus, Integer dvan, Integer dother, String pnextarival, String dnextarival) {
+    }
+
+    public Station() {
+    }
+
     public String getId() {
         return id;
     }

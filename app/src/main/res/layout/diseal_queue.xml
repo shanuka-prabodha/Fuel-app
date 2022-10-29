@@ -24,14 +24,13 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_width="157dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="108dp"
         android:text="Next Fuel Arrival Time "
         android:textColor="#050505"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/dTime"
-        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view34" />
 
@@ -39,13 +38,13 @@
         android:id="@+id/dTime"
         android:layout_width="171dp"
         android:layout_height="24dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
         android:text="2022-10-5 2.00 PM"
         android:textColor="#050505"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view34" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -53,7 +52,7 @@
         android:layout_height="36dp"
 
         android:layout_marginStart="80dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="72dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:srcCompat="@drawable/smallcar" />
@@ -85,12 +84,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="52dp"
         android:text="TextView"
         android:textColor="#050505"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toBottomOf="@+id/dTime" />
 
@@ -114,12 +113,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="168dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="56dp"
         android:text="TextView"
         android:textColor="#050505"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toEndOf="@+id/imageView12"
         app:layout_constraintTop_toBottomOf="@+id/vanPL" />
 

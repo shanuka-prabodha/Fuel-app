@@ -35,6 +35,10 @@ public class User {
     @Expose
     private String fuelcompany;
 
+    public User() {
+
+    }
+
     public String getId() {
         return id;
     }
