@@ -62,7 +62,7 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.searchHolder> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(holder.view.getContext(), ViewActivity.class);
-                intent.putExtra("key", stationList.get(position).getId());
+                intent.putExtra("id", stationList.get(position).getId());
                 holder.view.getContext().startActivity(intent);
             }
         });

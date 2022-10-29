@@ -23,8 +23,30 @@ public class StorageManager {
     }
     public String getToken() {
         return pref.getString("Token", "");
-
-
     }
+
+    public void setQueJoin(Boolean queJoin , String station) {
+        editor.putBoolean("Joined", queJoin);
+        editor.putString("Station", station);
+        editor.commit();
+    }
+
+    public Boolean getQueJoin() {
+        return pref.getBoolean("Joined", false);
+    }
+
+    public String getJoinStation() {
+        return pref.getString("Station", "");
+    }
+
+    public void setFuelType(String fuelType) {
+        editor.putString("FuelType", fuelType);
+        editor.commit();
+    }
+
+    public String getFuelType() {
+        return pref.getString("FuelType", "");
+    }
+
 }
 

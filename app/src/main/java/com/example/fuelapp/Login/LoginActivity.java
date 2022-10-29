@@ -94,19 +94,20 @@ public class LoginActivity extends AppCompatActivity {
                 //depend on response redirect user to relevent page or display error messages
 
                 if (response.code() == 200) {
+                    //save user id in local storage
+                    username.setText("");
+                    password.setText("");
+
+                    StorageManager storeManager = new StorageManager(getApplicationContext());
+                    storeManager.setToken(response.body().getData().getId());
+
                     if (response.body().getData().getRole().contentEquals("user")) {
 
-                        //save user id in local storage
-                        StorageManager storeManager = new StorageManager(getApplicationContext());
-                        storeManager.setToken(response.body().getData().getId());
-
+                        storeManager.setFuelType(response.body().getData().getFueltype());
                         DBHandler dbHandler = new DBHandler(LoginActivity.this);
                         long val = 0;
-
                         ArrayList<LocalVehicleLogin> localVehicleLogins = dbHandler.readVehicleLogins();
-
                         boolean isExist = false;
-
                         //Check user is already save in the local database.
                         for (LocalVehicleLogin vehicleLogin : localVehicleLogins) {
                             if (vehicleLogin.getEmail().toLowerCase().contains(user.toLowerCase())) {
@@ -125,7 +126,6 @@ public class LoginActivity extends AppCompatActivity {
                             );
                         }
 
-
                         if (val > 0) {
 //                            Toast.makeText(LoginActivity.this, "Vehicle login Successfully", Toast.LENGTH_SHORT).show();
 
@@ -142,9 +142,7 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         DBHandler dbHandler = new DBHandler(LoginActivity.this);
 
-
                         long val = 0;
-
                         ArrayList<LocalStationLogin> localStationLogins = dbHandler.readStationLogins();
 
                         boolean isExist = false;
@@ -169,8 +167,6 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
 //                            Toast.makeText(LoginActivity.this, "Not Successfully", Toast.LENGTH_SHORT).show();
                         }
-
-
 
                         Intent intent = new Intent(LoginActivity.this, StationActivity.class);
                         startActivity(intent);

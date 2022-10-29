@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fuelapp.Interface.IUserAPI;
+import com.example.fuelapp.Login.StorageManager;
 import com.example.fuelapp.Model.Controller;
 import com.example.fuelapp.Model.User;
 import com.example.fuelapp.R;
@@ -48,8 +49,11 @@ public class ViewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
 
+        StorageManager storeManager = new StorageManager(getApplicationContext());
+        storeManager.getToken();
+
         getStationDataByID(id);
-        getUserDetails("6353fb682c09d6fe65aec9cf");
+        getUserDetails(storeManager.getToken());
 
         txtPetrolAvailable = findViewById(R.id.pAvailable);
         txtDisealAvailable = findViewById(R.id.dAvailable);
@@ -76,10 +80,33 @@ public class ViewActivity extends AppCompatActivity {
         dsExitBefore.setVisibility(View.INVISIBLE);
         dsExitAfter.setVisibility(View.INVISIBLE);
 
+        if(storeManager.getJoinStation() != "" && storeManager.getJoinStation().equals(id)){
+
+            if(storeManager.getFuelType().equals("Petrol")){
+                ptJoin.setVisibility(View.INVISIBLE);
+                ptExitBefore.setVisibility(View.VISIBLE);
+                ptExitAfter.setVisibility(View.VISIBLE);
+            }else{
+                dsJoin.setVisibility(View.INVISIBLE);
+                dsExitBefore.setVisibility(View.VISIBLE);
+                dsExitAfter.setVisibility(View.VISIBLE);
+            }
+
+        }
+
 
         ptJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                StorageManager storeManager = new StorageManager(getApplicationContext());
+                System.out.println(storeManager.getQueJoin());
+
+                if(storeManager.getQueJoin()){
+                    Toast.makeText(ViewActivity.this, "You are already in a queue", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                storeManager.setQueJoin(true, headStation.getId());
 
                 if(user.getFueltype().equals("Petrol")){
                     ptExitBefore.setVisibility(View.VISIBLE);
@@ -95,6 +122,15 @@ public class ViewActivity extends AppCompatActivity {
         dsJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                StorageManager storeManager = new StorageManager(getApplicationContext());
+
+                if(storeManager.getQueJoin()){
+                    Toast.makeText(ViewActivity.this, "You are already in a queue", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                storeManager.setQueJoin(true, headStation.getId());
 
                 if (user.getFueltype().equals("Diesel")) {
                     dsExitBefore.setVisibility(View.VISIBLE);
@@ -112,7 +148,7 @@ public class ViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                getStationDataByID("63540401d26b8b17b97cdd6e");
+                getStationDataByID(id);
             }
         });
 
@@ -159,6 +195,7 @@ public class ViewActivity extends AppCompatActivity {
                 ptExitAfter.setVisibility(View.INVISIBLE);
                 ptJoin.setVisibility(View.VISIBLE);
                 UpdateStaionQue(-1);
+                storeManager.setQueJoin(false, "");
             }
         });
 
@@ -169,6 +206,7 @@ public class ViewActivity extends AppCompatActivity {
                 ptExitAfter.setVisibility(View.INVISIBLE);
                 ptJoin.setVisibility(View.VISIBLE);
                 UpdateStaionQue(-1);
+                storeManager.setQueJoin(false, "");
             }
         });
 
@@ -179,6 +217,7 @@ public class ViewActivity extends AppCompatActivity {
                 dsExitAfter.setVisibility(View.INVISIBLE);
                 dsJoin.setVisibility(View.VISIBLE);
                 UpdateStaionQue(-1);
+                storeManager.setQueJoin(false, "");
             }
         });
 
@@ -189,6 +228,7 @@ public class ViewActivity extends AppCompatActivity {
                 dsExitAfter.setVisibility(View.INVISIBLE);
                 dsJoin.setVisibility(View.VISIBLE);
                 UpdateStaionQue(-1);
+                storeManager.setQueJoin(false, "");
             }
         });
 
