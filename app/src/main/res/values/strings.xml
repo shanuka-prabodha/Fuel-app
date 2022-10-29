@@ -19,6 +19,13 @@
     </string-array>
 
 
+    <string-array name="fuelStatus">Fuel types
+        <item>Available</item>
+        <item>Finished</item>
+    </string-array>
+
+
+
     <string-array name="vehicleType">Fuel types
         <item>Bicycle</item>
         <item>Car</item>
