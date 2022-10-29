@@ -107,7 +107,7 @@ public class StationRegisterActivity extends AppCompatActivity {
             return;
         }
 
-        User user = new User(email, password,"admin","",company,"63540401d26b8b17b97cdd6e"); //create user object with overloaded constructor
+        User user = new User(email, password,"admin","",company,stationId); //create user object with overloaded constructor
 
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
         Call<UserLoginResponse> call = iUserAPI.SaveUser(user); //Station user registration api call
