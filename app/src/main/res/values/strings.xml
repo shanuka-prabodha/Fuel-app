@@ -40,4 +40,8 @@
         <item>IOC</item>
     </string-array>
 
+    <string-array name="stations">Fuel types
+        <item>Select one</item>
+    </string-array>
+
 </resources>

@@ -86,8 +86,6 @@ class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.searchHolder> {
             pstatus = (TextView) itemView.findViewById(R.id.pt);
             dStatus = (TextView) itemView.findViewById(R.id.ds);
             view = (Button) itemView.findViewById(R.id.btn_view);
-
-
         }
 
     }

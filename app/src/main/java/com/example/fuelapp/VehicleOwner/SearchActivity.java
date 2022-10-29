@@ -53,13 +53,6 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-
-//        StorageManager storeManager = new StorageManager(getApplicationContext());
-//        storeManager.getToken();
-//
-//        System.out.println( "storeManager.getToken() +++++++++++++++++++++++++++++++++");
-//        System.out.println( storeManager.getToken());
-
         recyclerView = findViewById(R.id.searchrecycleview);
         searchView = findViewById(R.id.searchview);
 
