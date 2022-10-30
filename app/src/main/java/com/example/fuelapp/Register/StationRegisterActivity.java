@@ -3,6 +3,7 @@ package com.example.fuelapp.Register;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fuelapp.Interface.IUserAPI;
+import com.example.fuelapp.Login.LoginActivity;
 import com.example.fuelapp.Model.Controller;
 import com.example.fuelapp.Model.Station;
 import com.example.fuelapp.Model.User;
@@ -107,7 +109,10 @@ public class StationRegisterActivity extends AppCompatActivity {
             return;
         }
 
-        User user = new User(email, password,"admin","",company,stationId); //create user object with overloaded constructor
+        //encrypt password
+        String encryptedPassword = Controller.encrypt(password);
+
+        User user = new User(email, encryptedPassword,"admin","",company,stationId); //create user object with overloaded constructor
 
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
         Call<UserLoginResponse> call = iUserAPI.SaveUser(user); //Station user registration api call
@@ -123,6 +128,8 @@ public class StationRegisterActivity extends AppCompatActivity {
 
                     Toast.makeText(StationRegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
 
+                    Intent intent = new Intent(StationRegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }
             }
 

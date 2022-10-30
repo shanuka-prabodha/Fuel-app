@@ -27,7 +27,7 @@
 
 
     <string-array name="vehicleType">Fuel types
-        <item>Bicycle</item>
+        <item>Bike</item>
         <item>Car</item>
         <item>Van</item>
         <item>Bus</item>

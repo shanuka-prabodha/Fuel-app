@@ -18,7 +18,7 @@ public class Controller{
     //get retrofit instance
     private static  Retrofit retrofit;
 
-    static final String BASE_URL = "http://192.168.1.44:5000/";
+    static final String BASE_URL = "http://192.168.1.2:5000/";
    //get ip address of the api hosted server
     //if you are using locallohoast use 10.0.2.2 instead of
 
@@ -32,4 +32,19 @@ public class Controller{
         return retrofit;
     }
 
+    public static String encrypt(String password) {
+        String encryptedPassword = "";
+        for (int i = 0; i < password.length(); i++) {
+            encryptedPassword += (char) (password.charAt(i) + 1);
+        }
+        return encryptedPassword;
+    }
+
+    public static String decrypt(String password) {
+        String decryptedPassword = "";
+        for (int i = 0; i < password.length(); i++) {
+            decryptedPassword += (char) (password.charAt(i) - 1);
+        }
+        return decryptedPassword;
+    }
 }

@@ -3,6 +3,7 @@ package com.example.fuelapp.Register;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fuelapp.Interface.IUserAPI;
+import com.example.fuelapp.Login.LoginActivity;
 import com.example.fuelapp.Model.Controller;
 import com.example.fuelapp.Model.User;
 import com.example.fuelapp.Model.UserLoginResponse;
@@ -80,8 +82,8 @@ public class VehicleRegisterActivity extends AppCompatActivity {
         this.password.requestFocus();
         return;
          }
-
-        User user = new User(email, password,"user",fuelType,vehicleType,vehicleNo , "");//create user object with overloaded constructor
+        String encryptedPassword = Controller.encrypt(password);
+        User user = new User(email, encryptedPassword,"user",fuelType,vehicleType,vehicleNo , "");//create user object with overloaded constructor
 
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
         Call<UserLoginResponse> call = iUserAPI.SaveUser(user); // save user details to the database
@@ -96,6 +98,10 @@ public class VehicleRegisterActivity extends AppCompatActivity {
 
                     Toast.makeText(VehicleRegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                     //display a success message
+
+                    Intent intent = new Intent(VehicleRegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+
                 }
             }
 

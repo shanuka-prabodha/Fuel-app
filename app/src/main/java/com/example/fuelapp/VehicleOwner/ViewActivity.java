@@ -20,10 +20,15 @@ import com.example.fuelapp.Interface.IUserAPI;
 import com.example.fuelapp.Login.LoginActivity;
 import com.example.fuelapp.Login.StorageManager;
 import com.example.fuelapp.Model.Controller;
+import com.example.fuelapp.Model.Queue;
+import com.example.fuelapp.Model.QueueAdd;
 import com.example.fuelapp.Model.User;
 import com.example.fuelapp.R;
 import com.example.fuelapp.Station.Station;
 import com.example.fuelapp.Station.StationResponse;
+
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,8 +57,8 @@ public class ViewActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
-
         StorageManager storeManager = new StorageManager(getApplicationContext());
+
         storeManager.getToken();
 
         getStationDataByID(id);
@@ -103,25 +108,33 @@ public class ViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 StorageManager storeManager = new StorageManager(getApplicationContext());
-                System.out.println(storeManager.getQueJoin());
-
-                if(storeManager.getQueJoin()){
-                    Toast.makeText(ViewActivity.this, "You are already in a queue", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                storeManager.setQueJoin(true, headStation.getId());
 
                 if(user.getFueltype().equals("Petrol")){
+                    if(storeManager.getQueJoin()){
+                        Toast.makeText(ViewActivity.this, "You are already in a queue", Toast.LENGTH_SHORT).show();
+                        return;
+                    }else{
+                        storeManager.setQueJoin(true, headStation.getId());
+                    }
+
                     ptExitBefore.setVisibility(View.VISIBLE);
                     ptExitAfter.setVisibility(View.VISIBLE);
                     ptJoin.setVisibility(View.INVISIBLE);
                     UpdateStaionQue(1);
+
+                    //get loacal time;
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+                dtf.format(LocalTime.now());
+                System.out.println(dtf.format(LocalTime.now()).toString());
+
+                storeManager.setStartTime(dtf.format(LocalTime.now()).substring(0,8));
+
                 }else{
                     Toast.makeText(ViewActivity.this, "You can't join this queue, you have a Diesel vehicle", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
         dsJoin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,18 +142,25 @@ public class ViewActivity extends AppCompatActivity {
 
                 StorageManager storeManager = new StorageManager(getApplicationContext());
 
-                if(storeManager.getQueJoin()){
-                    Toast.makeText(ViewActivity.this, "You are already in a queue", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                storeManager.setQueJoin(true, headStation.getId());
 
                 if (user.getFueltype().equals("Diesel")) {
+                    if(storeManager.getQueJoin()){
+                        Toast.makeText(ViewActivity.this, "You are already in a queue", Toast.LENGTH_SHORT).show();
+                        return;
+                    }else{
+                        storeManager.setQueJoin(true, headStation.getId());
+                    }
+
                     dsExitBefore.setVisibility(View.VISIBLE);
                     dsExitAfter.setVisibility(View.VISIBLE);
                     dsJoin.setVisibility(View.INVISIBLE);
                     UpdateStaionQue(1);
+
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+                    dtf.format(LocalTime.now());
+                    System.out.println(dtf.format(LocalTime.now()));
+                    storeManager.setStartTime(dtf.format(LocalTime.now()).substring(0,8));
+
                 }else{
                     Toast.makeText(ViewActivity.this, "You can't join this queue, you have a Petrol vehicle", Toast.LENGTH_SHORT).show();
                 }
@@ -160,6 +180,8 @@ public class ViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ViewActivity.this, TimeTrackActivity.class);
+                intent.putExtra("station", headStation.getId());
+                intent.putExtra("fuelType", "Petrol");
                 startActivity(intent);
 
             }
@@ -169,6 +191,8 @@ public class ViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ViewActivity.this, TimeTrackActivity.class);
+                intent.putExtra("station", headStation.getId());
+                intent.putExtra("fuelType", "Diesel");
                 startActivity(intent);
 
             }
@@ -210,7 +234,11 @@ public class ViewActivity extends AppCompatActivity {
                 ptExitAfter.setVisibility(View.INVISIBLE);
                 ptJoin.setVisibility(View.VISIBLE);
                 UpdateStaionQue(-1);
+                updatQueue("Petrol");
                 storeManager.setQueJoin(false, "");
+
+
+
             }
         });
 
@@ -221,6 +249,7 @@ public class ViewActivity extends AppCompatActivity {
                 dsExitAfter.setVisibility(View.INVISIBLE);
                 dsJoin.setVisibility(View.VISIBLE);
                 UpdateStaionQue(-1);
+                updatQueue("Diesel");
                 storeManager.setQueJoin(false, "");
             }
         });
@@ -449,6 +478,32 @@ public class ViewActivity extends AppCompatActivity {
         Toast.makeText(this, "You logged out", Toast.LENGTH_SHORT).show();
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void updatQueue(String fuelType){
+        StorageManager storeManager = new StorageManager(getApplicationContext());
+        Queue queue = new Queue(headStation.getId(),user.getId(),user.getVehicleno(),fuelType,storeManager.getStartTime(),LocalTime.now().toString().substring(0,8));
+
+        IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
+        Call<QueueAdd> call = iUserAPI.addQueue(queue);
+
+        call.enqueue(new Callback<QueueAdd>() {
+            @Override
+            public void onResponse(Call<QueueAdd> call, Response<QueueAdd> response) {
+                Log.e("StationActivity", "updatQueue Response code " + response.code());
+                if (response.code() == 200) {
+                    Log.e("StationActivity", "updatQueue Success  " + response.body().getMsg());
+                } else {
+                    Log.e("StationActivity", "updatQueue Error  " + response.body().getMsg());
+                }
+            }
+            @Override
+            public void onFailure(Call<QueueAdd> call, Throwable t) {
+                Log.e("RegisterActivity", String.valueOf(t));
+            }
+        });
+
+
     }
 
 

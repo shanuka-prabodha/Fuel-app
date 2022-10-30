@@ -56,5 +56,14 @@ public class StorageManager {
         return pref.getString("AdminStation", "");
     }
 
+    public void setStartTime(String startTime) {
+        editor.putString("StartTime", startTime);
+        editor.commit();
+    }
+
+    public String getStartTime() {
+        return pref.getString("StartTime", "");
+    }
+
 }
 

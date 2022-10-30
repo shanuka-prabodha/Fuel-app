@@ -1,6 +1,9 @@
 package com.example.fuelapp.Interface;
 
 import com.example.fuelapp.Model.LoginRequest;
+import com.example.fuelapp.Model.Queue;
+import com.example.fuelapp.Model.QueueAdd;
+import com.example.fuelapp.Model.QueueList;
 import com.example.fuelapp.Model.Station;
 import com.example.fuelapp.Model.UserReponse;
 import com.example.fuelapp.Model.User;
@@ -34,7 +37,6 @@ public interface IUserAPI {
     @GET("api/user/get/{id}")
     Call<User> getOneUser(@Path("id") String id);
 
-
     //ligin user api call
     @POST("api/user")
     Call<UserLoginResponse> SaveUser(@Body User user);
@@ -48,5 +50,11 @@ public interface IUserAPI {
 
     @PUT("api/station/update/{id}/{available}/{type}/{date}")
     Call<StationResponse> updateStationDetails(@Path("id") String id,@Path("available") Boolean available,@Path("type") String type,@Path("date") String date);
+
+    @GET("api/queue/{station}/{fueltype}")
+    Call<QueueList> getQueue(@Path("station") String station, @Path("fueltype") String fueltype);
+
+    @POST("api/queue")
+    Call<QueueAdd> addQueue(@Body Queue queue);
 
 }

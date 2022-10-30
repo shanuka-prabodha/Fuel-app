@@ -73,8 +73,9 @@ public class LoginActivity extends AppCompatActivity {
         String user = username.getText().toString();
         String pass = password.getText().toString();
 
+        String encryptedPassword = Controller.encrypt(pass);
         //craete login user object
-        LoginRequest loginRequest = new LoginRequest(user, pass);
+        LoginRequest loginRequest = new LoginRequest(user, encryptedPassword);
 
 
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
