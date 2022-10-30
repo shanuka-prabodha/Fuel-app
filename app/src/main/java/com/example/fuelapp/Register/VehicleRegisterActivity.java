@@ -39,7 +39,7 @@ public class VehicleRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(com.example.fuelapp.R.layout.activity_vehicle_register);
         
-        vehicleNo = findViewById(R.id.txtvehicle);
+        vehicleNo = findViewById(R.id.editTextTextPersonName);
         fuelType = findViewById(R.id.spnFuel);
         vehicleType = findViewById(R.id.spnVehicle);
         email = findViewById(R.id.txtEmail);
@@ -83,6 +83,8 @@ public class VehicleRegisterActivity extends AppCompatActivity {
         return;
          }
         String encryptedPassword = Controller.encrypt(password);
+
+
         User user = new User(email, encryptedPassword,"user",fuelType,vehicleType,vehicleNo , "");//create user object with overloaded constructor
 
         IUserAPI iUserAPI = Controller.getRetrofit().create(IUserAPI.class);
